@@ -6,22 +6,78 @@
 ## Documentation Index
 
 1. [Introduction](#introduction)
-2. [Modern .NET Workspace](#modern-net-workspace)
-3. [How to Use DBC API Clients](#how-to-use-dbc-api-clients)
-4. [New Recaptcha API support](#new-recaptcha-api-support)
-5. [New Recaptcha by Token API support (reCAPTCHA v2 and reCAPTCHA v3)](#new-recaptcha-by-token-api-support-recaptcha-v2-and-recaptcha-v3)
-6. [Running Tests](#running-tests)
-7. [CI Status Badges](#ci-status-badges)
-8. [Changelog](CHANGELOG.md)
-9. [Selenium Test Sample](SELENIUM_TESTS.md)
+2. [Use as NuGet Package](#use-as-nuget-package)
+3. [Modern .NET Workspace](#modern-net-workspace)
+4. [How to Use DBC API Clients](#how-to-use-dbc-api-clients)
+5. [New Recaptcha API support](#new-recaptcha-api-support)
+6. [New Recaptcha by Token API support (reCAPTCHA v2 and reCAPTCHA v3)](#new-recaptcha-by-token-api-support-recaptcha-v2-and-recaptcha-v3)
+7. [Running Tests](#running-tests)
+8. [CI Status Badges](#ci-status-badges)
+9. [Changelog](CHANGELOG.md)
+10. [Selenium Test Sample](SELENIUM_TESTS.md)
 
 ## Introduction
 
 DeathByCaptcha offers APIs of two types — HTTP and socket-based, with the latter being recommended for having faster responses and overall better performance. Switching between different APIs is usually as easy as changing the client class and/or package name, the interface stays the same.
 
-Current release: `4.7.0`. See [CHANGELOG.md](CHANGELOG.md) for release details.
+Current release: `4.7.1`. See [CHANGELOG.md](CHANGELOG.md) for release details.
 
 When using the socket API, please make sure that outgoing TCP traffic to *api.dbcapi.me* to the ports range *8123–8130* is not blocked on your side.
+
+## Use as NuGet Package
+
+Install from NuGet:
+
+```bash
+dotnet add package DeathByCaptcha --version 4.7.1
+```
+
+Or add it directly in your project file:
+
+```xml
+<ItemGroup>
+    <PackageReference Include="DeathByCaptcha" Version="4.7.1" />
+</ItemGroup>
+```
+
+Minimal C# example:
+
+```csharp
+using System;
+using DeathByCaptcha;
+
+string username = Environment.GetEnvironmentVariable("DBC_USERNAME") ?? "your_username";
+string password = Environment.GetEnvironmentVariable("DBC_PASSWORD") ?? "your_password";
+
+Client client = new DeathByCaptcha.HttpClient(username, password);
+
+try
+{
+    double balance = client.GetBalance();
+    Console.WriteLine($"Balance: {balance}");
+
+    Captcha captcha = client.Decode("captcha.jpg", 120);
+    if (captcha != null)
+    {
+        Console.WriteLine($"Solved CAPTCHA {captcha.Id}: {captcha.Text}");
+    }
+    else
+    {
+        Console.WriteLine("CAPTCHA was not solved in time.");
+    }
+}
+catch (AccessDeniedException)
+{
+    Console.WriteLine("Invalid credentials or insufficient balance.");
+}
+```
+
+Notes:
+
+- Use `HttpClient` for HTTP API or `SocketClient` for socket API.
+- If your project also uses `System.Net.Http`, use `DeathByCaptcha.HttpClient` (fully qualified) to avoid type ambiguity.
+- Keep credentials in environment variables (`DBC_USERNAME`, `DBC_PASSWORD`) instead of hardcoding.
+- See the full runnable samples in `DBC_Examples/` and `DBC_Examples_VB/`.
 
 ## Modern .NET Workspace
 

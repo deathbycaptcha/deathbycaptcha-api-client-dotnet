@@ -25,7 +25,7 @@ namespace DeathByCaptcha
         /**
          * <value>API client version.</value>
          */
-        public const string Version = "DBC/.NET v4.7.0";
+        public const string Version = "DBC/.NET v4.7.1";
 
         /**
          * <value>Arbitrary 3rd-party software ID.</value>

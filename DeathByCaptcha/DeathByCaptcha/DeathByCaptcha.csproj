@@ -23,7 +23,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\SimpleJson\SimpleJson.csproj" />
+      <Compile Include="..\SimpleJson\Reader.cs" Link="SimpleJson\Reader.cs" />
+      <Compile Include="..\SimpleJson\Writer.cs" Link="SimpleJson\Writer.cs" />
     </ItemGroup>
 
 </Project>

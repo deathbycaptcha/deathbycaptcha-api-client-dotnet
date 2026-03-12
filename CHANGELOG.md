@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## 4.7.1 - 2026-03-12
+
+### Fixed
+
+- Fixed NuGet package consumption by removing the broken external `SimpleJson` dependency from the published `DeathByCaptcha` package.
+- Updated library packaging so required internal JSON sources are compiled into the main assembly.
+- Fixed the NuGet Trusted Publishing workflow login configuration to use the correct nuget.org user value.
+
+### Documentation
+
+- Added and corrected the README section for using `DeathByCaptcha` as a NuGet package.
+- Updated install snippets and release references to `4.7.1`.
+
 ## 4.7.0 - 2026-03-12
 
 ### Added

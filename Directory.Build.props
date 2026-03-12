@@ -1,6 +1,6 @@
 <Project>
   <PropertyGroup>
-    <DeathByCaptchaVersion>4.7.0</DeathByCaptchaVersion>
+    <DeathByCaptchaVersion>4.7.1</DeathByCaptchaVersion>
     <DeathByCaptchaLtsTargetFrameworks>net6.0;net8.0;net10.0</DeathByCaptchaLtsTargetFrameworks>
     <Version>$(DeathByCaptchaVersion)</Version>
     <VersionPrefix>$(DeathByCaptchaVersion)</VersionPrefix>
