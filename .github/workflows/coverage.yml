@@ -33,7 +33,7 @@ jobs:
             --filter "Category!=Integration" \
             /p:CollectCoverage=true \
             /p:CoverletOutput=./TestResults/coverage/ \
-            /p:CoverletOutputFormat=json,cobertura \
+            '/p:CoverletOutputFormat="json,cobertura"' \
             /p:Exclude="[SimpleJson*]*"
 
       - name: Upload coverage artifacts
