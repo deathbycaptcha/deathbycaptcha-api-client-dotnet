@@ -1,4 +1,4 @@
-name: Integration Tests Basic
+name: Integration Tests Selenium
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  integration-basic:
+  integration-selenium:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,6 +16,13 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '10.0.x'
+
+      - name: Ensure Firefox is installed
+        run: |
+          if ! command -v firefox >/dev/null 2>&1; then
+            sudo apt-get update
+            sudo apt-get install -y firefox
+          fi
 
       - name: Restore
         run: dotnet restore dbc_api_net.sln
@@ -36,16 +43,17 @@ jobs:
         if: steps.secrets-check.outputs.missing == 'true'
         run: |
           echo "DBC_USERNAME/DBC_PASSWORD are not configured in repository secrets."
-          echo "Skipping basic integration tests."
+          echo "Skipping selenium integration tests."
 
-      - name: Run basic integration tests (net10)
+      - name: Run selenium integration tests (net10)
         if: steps.secrets-check.outputs.missing == 'false'
         env:
           DBC_USERNAME: ${{ secrets.DBC_USERNAME }}
           DBC_PASSWORD: ${{ secrets.DBC_PASSWORD }}
-          DBC_INTEGRATION_FULL: "false"
+          DBC_SELENIUM_HEADLESS: "true"
+          DBC_SELENIUM_PAGE_URL: "https://www.google.com/recaptcha/api2/demo"
         run: |
           dotnet test DeathByCaptcha/DeathByCaptcha.Tests/DeathByCaptcha.Tests.csproj \
             -c Release --no-build -f net10.0 \
-            --filter "Category=Integration&Category!=Selenium&FullyQualifiedName!~FullApiSurface" \
+            --filter "Category=Selenium" \
             --logger "console;verbosity=normal"

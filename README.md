@@ -1,7 +1,7 @@
 # [DeathByCaptcha](https://deathbycaptcha.com/)
 
-![Unit Tests net10](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/unit-tests-net10.yml/badge.svg?branch=master)
-![Coverage net10](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/badges/.github/badges/coverage-net10.json)
+[![Unit Tests net10](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/unit-tests-net10.yml/badge.svg?branch=master)](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/unit-tests-net10.yml)
+[![Coverage net10](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/badges/.github/badges/coverage-net10.json)](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/coverage.yml)
 
 ## Documentation Index
 
@@ -13,6 +13,7 @@
 6. [Running Tests](#running-tests)
 7. [CI Status Badges](#ci-status-badges)
 8. [Changelog](CHANGELOG.md)
+9. [Selenium Test Sample](SELENIUM_TESTS.md)
 
 ## Introduction
 
@@ -67,10 +68,15 @@ Use `net6.0` only when compatibility with existing consumers is required.
 - Build all: `dotnet build dbc_api_net.sln -c Release`
 - Build library only: `dotnet build DeathByCaptcha/DeathByCaptcha/DeathByCaptcha.csproj -c Release -f net10.0`
 - Run C# examples with explicit startup class:
-    `dotnet run --project DBC_Examples/DBC_Examples.csproj -c Release -f net10.0 -p:StartupObject=DeathByCaptcha.ExampleSimple`
+    `dotnet run --project DBC_Examples/DBC_Examples.csproj -c Release -f net10.0 /p:StartupObject=DeathByCaptcha.ExampleSimple /t:Rebuild`
 - Run VB examples with explicit startup class:
-    `dotnet run --project DBC_Examples_VB/DBC_Examples_VB.vbproj -c Release -f net10.0 -p:StartupObject=DBC_Examples_VB.ExampleSimple`
+    `dotnet run --project DBC_Examples_VB/DBC_Examples_VB.vbproj -c Release -f net10.0 /p:StartupObject=DBC_Examples_VB.ExampleSimple /t:Rebuild`
 - Run tests: `dotnet test DeathByCaptcha/DeathByCaptcha.Tests/DeathByCaptcha.Tests.csproj -c Release`
+- Run Selenium sample:
+    `dotnet run --project DBC_Examples/DBC_Examples.csproj -c Release -f net10.0 /p:StartupObject=DeathByCaptcha.SeleniumRecaptchaV2Example /t:Rebuild`
+
+Use `/p:StartupObject=...` with `dotnet run` (not `-p:...`) to avoid conflict with `-p/--project`.
+If you are switching between different startup classes, include `/t:Rebuild` (or run `dotnet clean`) to avoid stale up-to-date outputs.
 
 ### Optional Make wrapper
 
@@ -446,6 +452,7 @@ Available workflows:
 - `.github/workflows/unit-tests-net8.yml`
 - `.github/workflows/unit-tests-net10.yml`
 - `.github/workflows/integration-basic.yml`
+- `.github/workflows/integration-selenium.yml`
 - `.github/workflows/coverage.yml`
 
 Set repository secrets `DBC_USERNAME` and `DBC_PASSWORD` before running the integration workflow.
@@ -456,8 +463,9 @@ The coverage badge is published from workflow `.github/workflows/coverage.yml` t
 
 | Workflow | Status |
 |---|---|
-| Unit Tests net6 | ![Unit Tests net6](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/unit-tests-net6.yml/badge.svg?branch=master) |
-| Unit Tests net8 | ![Unit Tests net8](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/unit-tests-net8.yml/badge.svg?branch=master) |
-| Unit Tests net10 | ![Unit Tests net10](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/unit-tests-net10.yml/badge.svg?branch=master) |
-| Integration Tests Basic | ![Integration Tests Basic](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/integration-basic.yml/badge.svg?branch=master) |
-| Coverage | ![Coverage net10](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/badges/.github/badges/coverage-net10.json) |
+| Unit Tests net6 | [![Unit Tests net6](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/unit-tests-net6.yml/badge.svg?branch=master)](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/unit-tests-net6.yml) |
+| Unit Tests net8 | [![Unit Tests net8](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/unit-tests-net8.yml/badge.svg?branch=master)](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/unit-tests-net8.yml) |
+| Unit Tests net10 | [![Unit Tests net10](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/unit-tests-net10.yml/badge.svg?branch=master)](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/unit-tests-net10.yml) |
+| Integration Tests Basic | [![Integration Tests Basic](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/integration-basic.yml/badge.svg?branch=master)](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/integration-basic.yml) |
+| Integration Tests Selenium | [![Integration Tests Selenium](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/integration-selenium.yml/badge.svg?branch=master)](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/integration-selenium.yml) |
+| Coverage | [![Coverage net10](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/badges/.github/badges/coverage-net10.json)](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/coverage.yml) |

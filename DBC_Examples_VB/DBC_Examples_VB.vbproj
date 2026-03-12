@@ -7,7 +7,7 @@
     <PropertyGroup>
     <OutputType>Exe</OutputType>
     <RootNamespace>DBC_Examples_VB</RootNamespace>
-    <StartupObject>DBC_Examples_VB.ExampleSimple</StartupObject>
+    <StartupObject Condition="'$(StartupObject)' == ''">DBC_Examples_VB.ExampleSimple</StartupObject>
     <TargetFrameworks>$(DeathByCaptchaLtsTargetFrameworks)</TargetFrameworks>
     </PropertyGroup>
 

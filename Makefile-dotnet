@@ -49,10 +49,10 @@ coverage: restore
 	$(DOTNET) test DeathByCaptcha/DeathByCaptcha.Tests/DeathByCaptcha.Tests.csproj -c $(CONFIGURATION) /p:CollectCoverage=true /p:CoverletOutput=./TestResults/coverage/ /p:CoverletOutputFormat=json /p:Exclude="[SimpleJson*]*"
 
 run-cs: build-cs
-	$(DOTNET) run --project DBC_Examples/DBC_Examples.csproj -c $(CONFIGURATION) -f $(TARGET) -p:StartupObject=$(CS_STARTUP)
+	$(DOTNET) run --project DBC_Examples/DBC_Examples.csproj -c $(CONFIGURATION) -f $(TARGET) /p:StartupObject=$(CS_STARTUP) /t:Rebuild
 
 run-vb: build-vb
-	$(DOTNET) run --project DBC_Examples_VB/DBC_Examples_VB.vbproj -c $(CONFIGURATION) -f $(TARGET) -p:StartupObject=$(VB_STARTUP)
+	$(DOTNET) run --project DBC_Examples_VB/DBC_Examples_VB.vbproj -c $(CONFIGURATION) -f $(TARGET) /p:StartupObject=$(VB_STARTUP) /t:Rebuild
 
 clean:
 	$(DOTNET) clean $(SOLUTION)
