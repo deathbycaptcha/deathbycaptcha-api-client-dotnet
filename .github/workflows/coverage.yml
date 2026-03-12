@@ -48,7 +48,12 @@ jobs:
         run: |
           set -euo pipefail
 
-          report="DeathByCaptcha/DeathByCaptcha.Tests/TestResults/coverage/coverage.cobertura.xml"
+          report=$(find DeathByCaptcha/DeathByCaptcha.Tests/TestResults/coverage -maxdepth 1 -type f -name '*.cobertura.xml' | head -n1)
+          if [ -z "$report" ]; then
+            echo "Coverage report not found in DeathByCaptcha/DeathByCaptcha.Tests/TestResults/coverage"
+            exit 1
+          fi
+
           line_rate=$(grep -o 'line-rate="[0-9.]*"' "$report" | head -n1 | cut -d'"' -f2)
           coverage_percent=$(awk -v rate="$line_rate" 'BEGIN { printf "%.1f", rate * 100 }')
 
