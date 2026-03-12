@@ -1,5 +1,8 @@
 # [DeathByCaptcha](https://deathbycaptcha.com/)
 
+![Unit Tests net10](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/unit-tests-net10.yml/badge.svg?branch=master)
+![Coverage net10](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/badges/.github/badges/coverage-net10.json)
+
 ## Documentation Index
 
 1. [Introduction](#introduction)
@@ -451,10 +454,10 @@ The coverage badge is published from workflow `.github/workflows/coverage.yml` t
 
 ## CI Status Badges
 
-| Workflow | Scope | Badge | Link |
-|---|---|---|---|
-| Unit Tests net6 | Unit tests on `net6.0` (without integration category) | ![Unit Tests net6](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/unit-tests-net6.yml/badge.svg?branch=master) | [unit-tests-net6.yml](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/unit-tests-net6.yml) |
-| Unit Tests net8 | Unit tests on `net8.0` (without integration category) | ![Unit Tests net8](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/unit-tests-net8.yml/badge.svg?branch=master) | [unit-tests-net8.yml](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/unit-tests-net8.yml) |
-| Unit Tests net10 | Unit tests on `net10.0` (without integration category) | ![Unit Tests net10](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/unit-tests-net10.yml/badge.svg?branch=master) | [unit-tests-net10.yml](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/unit-tests-net10.yml) |
-| Integration Tests Basic | Basic integration tests on `net10.0` | ![Integration Tests Basic](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/integration-basic.yml/badge.svg?branch=master) | [integration-basic.yml](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/integration-basic.yml) |
-| Coverage | Coverage run on `net10.0` with published percentage badge payload | ![Coverage net10](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/badges/.github/badges/coverage-net10.json) | [coverage.yml](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/coverage.yml) |
+| Workflow | Status |
+|---|---|
+| Unit Tests net6 | ![Unit Tests net6](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/unit-tests-net6.yml/badge.svg?branch=master) |
+| Unit Tests net8 | ![Unit Tests net8](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/unit-tests-net8.yml/badge.svg?branch=master) |
+| Unit Tests net10 | ![Unit Tests net10](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/unit-tests-net10.yml/badge.svg?branch=master) |
+| Integration Tests Basic | ![Integration Tests Basic](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/integration-basic.yml/badge.svg?branch=master) |
+| Coverage | ![Coverage net10](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/badges/.github/badges/coverage-net10.json) |
