@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <ItemGroup>
+      <ProjectReference Include="..\DeathByCaptcha\DeathByCaptcha\DeathByCaptcha.csproj" />
+    </ItemGroup>
+
+    <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>DBC_Examples_VB</RootNamespace>
+    <StartupObject>DBC_Examples_VB.ExampleSimple</StartupObject>
+    <TargetFrameworks>$(DeathByCaptchaLtsTargetFrameworks)</TargetFrameworks>
+    </PropertyGroup>
+
+</Project>

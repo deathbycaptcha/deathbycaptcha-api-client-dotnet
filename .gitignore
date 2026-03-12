@@ -1,0 +1,31 @@
+# Build outputs
+**/bin/
+**/obj/
+**/TestResults/
+**/artifacts/
+
+# Coverage and test reports
+coverage/
+coverage-*/
+*.coverage
+*.coveragexml
+*.trx
+
+# NuGet packages
+*.nupkg
+*.snupkg
+
+# IDE/editor
+.vs/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local secrets (never commit)
+.env

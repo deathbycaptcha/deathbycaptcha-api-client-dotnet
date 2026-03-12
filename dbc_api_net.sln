@@ -1,0 +1,55 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBC_Examples", "DBC_Examples\DBC_Examples.csproj", "{BA767E63-62DD-A380-EA7E-7452097AB0FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeathByCaptcha", "DeathByCaptcha\DeathByCaptcha.csproj", "{1918697B-A2F9-83DB-E6A3-5C69984CEAA1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DeathByCaptcha (1)", "DeathByCaptcha (1)", "{1759C92B-CA36-875B-CA3B-59F2FCD1228A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleJson", "DeathByCaptcha\SimpleJson\SimpleJson.csproj", "{F613AEEB-B310-A907-4724-95091995EED2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeathByCaptcha", "DeathByCaptcha\DeathByCaptcha\DeathByCaptcha.csproj", "{0D154203-94D8-10CF-FE2C-E75C9F6DC849}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeathByCaptcha.Tests", "DeathByCaptcha\DeathByCaptcha.Tests\DeathByCaptcha.Tests.csproj", "{5F348D1D-7296-B885-8CEC-A2192FE67B52}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BA767E63-62DD-A380-EA7E-7452097AB0FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA767E63-62DD-A380-EA7E-7452097AB0FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA767E63-62DD-A380-EA7E-7452097AB0FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA767E63-62DD-A380-EA7E-7452097AB0FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1918697B-A2F9-83DB-E6A3-5C69984CEAA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1918697B-A2F9-83DB-E6A3-5C69984CEAA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1918697B-A2F9-83DB-E6A3-5C69984CEAA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1918697B-A2F9-83DB-E6A3-5C69984CEAA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F613AEEB-B310-A907-4724-95091995EED2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F613AEEB-B310-A907-4724-95091995EED2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F613AEEB-B310-A907-4724-95091995EED2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F613AEEB-B310-A907-4724-95091995EED2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D154203-94D8-10CF-FE2C-E75C9F6DC849}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D154203-94D8-10CF-FE2C-E75C9F6DC849}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D154203-94D8-10CF-FE2C-E75C9F6DC849}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D154203-94D8-10CF-FE2C-E75C9F6DC849}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F348D1D-7296-B885-8CEC-A2192FE67B52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F348D1D-7296-B885-8CEC-A2192FE67B52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F348D1D-7296-B885-8CEC-A2192FE67B52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F348D1D-7296-B885-8CEC-A2192FE67B52}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F613AEEB-B310-A907-4724-95091995EED2} = {1759C92B-CA36-875B-CA3B-59F2FCD1228A}
+		{0D154203-94D8-10CF-FE2C-E75C9F6DC849} = {1759C92B-CA36-875B-CA3B-59F2FCD1228A}
+		{5F348D1D-7296-B885-8CEC-A2192FE67B52} = {1759C92B-CA36-875B-CA3B-59F2FCD1228A}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B82B8E9C-358C-4F29-BD55-118262151EC6}
+	EndGlobalSection
+EndGlobal

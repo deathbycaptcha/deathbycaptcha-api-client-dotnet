@@ -1,0 +1,35 @@
+name: Unit Tests net6
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  unit-tests-net6:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            6.0.x
+            8.0.x
+            10.0.x
+
+      - name: Restore
+        run: dotnet restore dbc_api_net.sln
+
+      - name: Build
+        run: dotnet build dbc_api_net.sln -c Release --no-restore
+
+      - name: Run unit tests (net6)
+        run: |
+          dotnet test DeathByCaptcha/DeathByCaptcha.Tests/DeathByCaptcha.Tests.csproj \
+            -c Release --no-build -f net6.0 \
+            --filter "Category!=Integration" \
+            --logger "console;verbosity=normal"

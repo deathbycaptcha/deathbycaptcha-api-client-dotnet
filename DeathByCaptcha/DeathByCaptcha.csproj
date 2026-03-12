@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>DeathByCaptcha.Host</AssemblyName>
+    <RootNamespace>DeathByCaptcha.Host</RootNamespace>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks>$(DeathByCaptchaLtsTargetFrameworks)</TargetFrameworks>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+  </ItemGroup>
+
+</Project>

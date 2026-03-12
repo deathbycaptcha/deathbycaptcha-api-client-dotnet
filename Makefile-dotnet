@@ -1,0 +1,58 @@
+DOTNET ?= dotnet
+SOLUTION ?= dbc_api_net.sln
+TARGET ?= net10.0
+CONFIGURATION ?= Release
+CS_STARTUP ?= DeathByCaptcha.ExampleSimple
+VB_STARTUP ?= DBC_Examples_VB.ExampleSimple
+
+.DEFAULT_GOAL := help
+
+.PHONY: help restore build build-lib build-cs build-vb build-examples test coverage run-cs run-vb clean
+
+help:
+	@echo "Modern .NET build wrapper (optional)."
+	@echo ""
+	@echo "Targets:"
+	@echo "  make -f Makefile-dotnet restore"
+	@echo "  make -f Makefile-dotnet build"
+	@echo "  make -f Makefile-dotnet build-lib"
+	@echo "  make -f Makefile-dotnet build-cs"
+	@echo "  make -f Makefile-dotnet build-vb"
+	@echo "  make -f Makefile-dotnet build-examples"
+	@echo "  make -f Makefile-dotnet test"
+	@echo "  make -f Makefile-dotnet coverage"
+	@echo "  make -f Makefile-dotnet run-cs CS_STARTUP=DeathByCaptcha.RecaptchaV2Example"
+	@echo "  make -f Makefile-dotnet run-vb VB_STARTUP=DBC_Examples_VB.RecaptchaV2"
+	@echo "  make -f Makefile-dotnet clean"
+
+restore:
+	$(DOTNET) restore $(SOLUTION)
+
+build: restore
+	$(DOTNET) build $(SOLUTION) -c $(CONFIGURATION)
+
+build-lib: restore
+	$(DOTNET) build DeathByCaptcha/DeathByCaptcha/DeathByCaptcha.csproj -c $(CONFIGURATION) -f $(TARGET)
+
+build-cs: restore
+	$(DOTNET) build DBC_Examples/DBC_Examples.csproj -c $(CONFIGURATION) -f $(TARGET)
+
+build-vb: restore
+	$(DOTNET) build DBC_Examples_VB/DBC_Examples_VB.vbproj -c $(CONFIGURATION) -f $(TARGET)
+
+build-examples: build-cs build-vb
+
+test: restore
+	$(DOTNET) test DeathByCaptcha/DeathByCaptcha.Tests/DeathByCaptcha.Tests.csproj -c $(CONFIGURATION)
+
+coverage: restore
+	$(DOTNET) test DeathByCaptcha/DeathByCaptcha.Tests/DeathByCaptcha.Tests.csproj -c $(CONFIGURATION) /p:CollectCoverage=true /p:CoverletOutput=./TestResults/coverage/ /p:CoverletOutputFormat=json /p:Exclude="[SimpleJson*]*"
+
+run-cs: build-cs
+	$(DOTNET) run --project DBC_Examples/DBC_Examples.csproj -c $(CONFIGURATION) -f $(TARGET) -p:StartupObject=$(CS_STARTUP)
+
+run-vb: build-vb
+	$(DOTNET) run --project DBC_Examples_VB/DBC_Examples_VB.vbproj -c $(CONFIGURATION) -f $(TARGET) -p:StartupObject=$(VB_STARTUP)
+
+clean:
+	$(DOTNET) clean $(SOLUTION)

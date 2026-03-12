@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+    <TargetFrameworks>$(DeathByCaptchaLtsTargetFrameworks)</TargetFrameworks>
+    <AssemblyName>DeathByCaptcha</AssemblyName>
+    <RootNamespace>DeathByCaptcha</RootNamespace>
+      <Nullable>disable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\SimpleJson\SimpleJson.csproj" />
+    </ItemGroup>
+
+</Project>
