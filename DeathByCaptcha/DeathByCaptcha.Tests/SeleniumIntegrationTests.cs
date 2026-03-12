@@ -52,6 +52,7 @@ namespace DeathByCaptcha.Tests
         [SkippableFact]
         public void Selenium_RecaptchaV2_Demo_Headless_ResolvesToken()
         {
+            Console.WriteLine("[SELENIUM-IT] START");
             string username = Environment.GetEnvironmentVariable("DBC_USERNAME") ?? string.Empty;
             string password = Environment.GetEnvironmentVariable("DBC_PASSWORD") ?? string.Empty;
 
@@ -63,6 +64,8 @@ namespace DeathByCaptcha.Tests
                              ?? "https://www.google.com/recaptcha/api2/demo";
 
             bool headless = ParseBool(Environment.GetEnvironmentVariable("DBC_SELENIUM_HEADLESS"), true);
+            Console.WriteLine($"[SELENIUM-IT] pageUrl={pageUrl}");
+            Console.WriteLine($"[SELENIUM-IT] headless={headless}");
 
             var options = new FirefoxOptions();
             if (headless)
@@ -77,9 +80,11 @@ namespace DeathByCaptcha.Tests
                 ExpectedConditions.PresenceOfAllElementsLocatedBy(By.Id("recaptcha-demo"))).FirstOrDefault();
 
             Assert.NotNull(captchaElement);
+            Console.WriteLine("[SELENIUM-IT] recaptcha container found");
 
             string googleKey = captchaElement.GetAttribute("data-sitekey") ?? string.Empty;
             Assert.False(string.IsNullOrWhiteSpace(googleKey));
+            Console.WriteLine($"[SELENIUM-IT] sitekey-length={googleKey.Length}");
 
             string tokenParams = JsonSerializer.Serialize(new Dictionary<string, string>
             {
@@ -96,26 +101,33 @@ namespace DeathByCaptcha.Tests
             Client client = new HttpClient(username, password) { Verbose = false };
             try
             {
+                Console.WriteLine("[SELENIUM-IT] requesting token from DBC");
                 Captcha solution = client.Decode(Client.DefaultTokenTimeout, captchaData);
                 Assert.NotNull(solution);
                 Assert.False(string.IsNullOrWhiteSpace(solution.Text));
+                Console.WriteLine($"[SELENIUM-IT] token received captchaId={solution.Id} token-length={solution.Text.Length}");
 
                 ((IJavaScriptExecutor)driver).ExecuteScript(
                     "document.getElementById('g-recaptcha-response').value = arguments[0];",
                     solution.Text);
+                Console.WriteLine("[SELENIUM-IT] token injected into g-recaptcha-response");
 
                 IWebElement submitButton = driver.FindElement(By.Id("recaptcha-demo-submit"));
                 submitButton.Click();
+                Console.WriteLine("[SELENIUM-IT] submit clicked");
 
                 IWebElement successElement = new WebDriverWait(driver, TimeSpan.FromSeconds(15)).Until(
                     ExpectedConditions.ElementIsVisible(By.ClassName("recaptcha-success")));
 
                 string successText = successElement.Text ?? string.Empty;
                 Assert.Contains("Verification Success", successText, StringComparison.OrdinalIgnoreCase);
+                Console.WriteLine($"[SELENIUM-IT] successText='{successText}'");
+                Console.WriteLine("[SELENIUM-IT] PASS");
             }
             finally
             {
                 client.Close();
+                Console.WriteLine("[SELENIUM-IT] END");
             }
         }
     }
