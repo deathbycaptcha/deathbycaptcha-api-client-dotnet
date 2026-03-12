@@ -4,8 +4,23 @@
     <TargetFrameworks>$(DeathByCaptchaLtsTargetFrameworks)</TargetFrameworks>
     <AssemblyName>DeathByCaptcha</AssemblyName>
     <RootNamespace>DeathByCaptcha</RootNamespace>
-      <Nullable>disable</Nullable>
+    <PackageId>DeathByCaptcha</PackageId>
+    <Title>DeathByCaptcha .NET API Client</Title>
+    <Authors>Death By Captcha</Authors>
+    <Company>Death By Captcha</Company>
+    <Description>Official Death By Captcha API client library for .NET with HTTP and socket transports.</Description>
+    <PackageTags>captcha;deathbycaptcha;api;client;dotnet</PackageTags>
+    <PackageProjectUrl>https://deathbycaptcha.com/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Nullable>disable</Nullable>
     </PropertyGroup>
+
+    <ItemGroup>
+      <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+    </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\SimpleJson\SimpleJson.csproj" />

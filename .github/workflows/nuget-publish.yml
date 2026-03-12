@@ -1,0 +1,45 @@
+name: NuGet Publish
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      skip_duplicate:
+        description: 'Skip if version already exists on NuGet'
+        type: boolean
+        default: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            6.0.x
+            8.0.x
+            10.0.x
+
+      - name: Restore
+        run: dotnet restore DeathByCaptcha/DeathByCaptcha/DeathByCaptcha.csproj
+
+      - name: Build
+        run: dotnet build DeathByCaptcha/DeathByCaptcha/DeathByCaptcha.csproj -c Release --no-restore
+
+      - name: Pack
+        run: |
+          dotnet pack DeathByCaptcha/DeathByCaptcha/DeathByCaptcha.csproj \
+            -c Release --no-build \
+            -o artifacts/nuget
+
+      - name: Push to NuGet
+        run: |
+          dotnet nuget push artifacts/nuget/*.nupkg \
+            --api-key "${{ secrets.NUGET_API_KEY }}" \
+            --source https://api.nuget.org/v3/index.json \
+            --skip-duplicate
