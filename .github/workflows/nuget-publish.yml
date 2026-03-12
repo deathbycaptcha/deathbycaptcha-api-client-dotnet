@@ -4,15 +4,12 @@ on:
   release:
     types: [published]
   workflow_dispatch:
-    inputs:
-      skip_duplicate:
-        description: 'Skip if version already exists on NuGet'
-        type: boolean
-        default: true
 
 jobs:
   publish:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write  # required for OIDC trusted publishing
 
     steps:
       - uses: actions/checkout@v4
@@ -37,9 +34,20 @@ jobs:
             -c Release --no-build \
             -o artifacts/nuget
 
+      # Exchanges the GitHub OIDC token for a short-lived NuGet API key.
+      # No stored secrets needed — configure a Trusted Publisher policy on nuget.org:
+      #   https://www.nuget.org/account/trusted-publishers
+      #   Owner: deathbycaptcha  |  Repository: deathbycaptcha-api-client-dotnet
+      #   Workflow file: nuget-publish.yml
+      - name: NuGet login (OIDC → temp API key)
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: ${{ secrets.NUGET_USERNAME }}
+
       - name: Push to NuGet
         run: |
           dotnet nuget push artifacts/nuget/*.nupkg \
-            --api-key "${{ secrets.NUGET_API_KEY }}" \
+            --api-key "${{ steps.login.outputs.NUGET_API_KEY }}" \
             --source https://api.nuget.org/v3/index.json \
             --skip-duplicate
