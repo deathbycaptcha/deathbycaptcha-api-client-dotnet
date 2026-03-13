@@ -1,0 +1,159 @@
+###############################################################################
+# DeathByCaptcha .NET — GitLab CI
+#
+# Mirrors the GitHub Actions workflows:
+#   unit-tests-net6/8/10, integration-basic, integration-selenium, coverage
+#
+# Run locally with gitlab-ci-local (see GITLAB_CI.md):
+#   gitlab-ci-local --env-file .env <job-name>
+###############################################################################
+
+default:
+  image: mcr.microsoft.com/dotnet/sdk:10.0
+  before_script:
+    - dotnet restore dbc_api_net.sln
+
+variables:
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: "1"
+  DOTNET_NOLOGO: "1"
+  DOTNET_CLI_TELEMETRY_OPTOUT: "1"
+  # Integration tests: override these via GitLab CI/CD Variables or .env (local)
+  DBC_USERNAME: ""
+  DBC_PASSWORD: ""
+  DBC_INTEGRATION_FULL: "false"
+  DBC_SELENIUM_HEADLESS: "true"
+  DBC_SELENIUM_PAGE_URL: "https://www.google.com/recaptcha/api2/demo"
+
+###############################################################################
+# Stages
+###############################################################################
+stages:
+  - build
+  - test
+  - coverage
+
+###############################################################################
+# BUILD
+###############################################################################
+build:
+  stage: build
+  script:
+    - dotnet build dbc_api_net.sln -c Release --no-restore
+  artifacts:
+    paths:
+      - "**/bin/Release/"
+      - "**/obj/"
+    expire_in: 1 hour
+
+###############################################################################
+# UNIT TESTS
+###############################################################################
+.unit-test-base:
+  stage: test
+  needs: [build]
+  script:
+    - |
+      dotnet test DeathByCaptcha/DeathByCaptcha.Tests/DeathByCaptcha.Tests.csproj \
+        -c Release --no-build -f "$TF" \
+        --filter "Category!=Integration" \
+        --logger "console;verbosity=normal"
+
+unit-tests-net6:
+  extends: .unit-test-base
+  variables:
+    TF: net6.0
+
+unit-tests-net8:
+  extends: .unit-test-base
+  variables:
+    TF: net8.0
+
+unit-tests-net10:
+  extends: .unit-test-base
+  variables:
+    TF: net10.0
+
+###############################################################################
+# INTEGRATION — BASIC
+###############################################################################
+integration-basic:
+  stage: test
+  needs: [build]
+  script:
+    - |
+      if [ -z "$DBC_USERNAME" ] || [ -z "$DBC_PASSWORD" ]; then
+        echo "DBC_USERNAME/DBC_PASSWORD not set — skipping basic integration tests."
+        exit 0
+      fi
+      dotnet test DeathByCaptcha/DeathByCaptcha.Tests/DeathByCaptcha.Tests.csproj \
+        -c Release --no-build -f net10.0 \
+        --filter "Category=Integration&Category!=Selenium&FullyQualifiedName!~FullApiSurface" \
+        --logger "console;verbosity=normal"
+  rules:
+    - when: always
+
+###############################################################################
+# INTEGRATION — SELENIUM
+###############################################################################
+integration-selenium:
+  stage: test
+  needs: [build]
+  before_script:
+    - apt-get update -qq && apt-get install -y firefox-esr wget
+    - |  
+      if ! command -v geckodriver >/dev/null 2>&1; then
+        GD_VER=$(wget -qO- https://api.github.com/repos/mozilla/geckodriver/releases/latest | grep '"tag_name"' | cut -d'"' -f4)
+        wget -qO /tmp/geckodriver.tar.gz "https://github.com/mozilla/geckodriver/releases/download/${GD_VER}/geckodriver-${GD_VER}-linux64.tar.gz"
+        tar -xzf /tmp/geckodriver.tar.gz -C /usr/local/bin/
+        chmod +x /usr/local/bin/geckodriver
+      fi
+    - dotnet restore dbc_api_net.sln
+  script:
+    - |
+      if [ -z "$DBC_USERNAME" ] || [ -z "$DBC_PASSWORD" ]; then
+        echo "DBC_USERNAME/DBC_PASSWORD not set — skipping Selenium integration tests."
+        exit 0
+      fi
+      export DBC_SELENIUM_HEADLESS="${DBC_SELENIUM_HEADLESS:-true}"
+      dotnet test DeathByCaptcha/DeathByCaptcha.Tests/DeathByCaptcha.Tests.csproj \
+        -c Release --no-build -f net10.0 \
+        --filter "Category=Selenium" \
+        --logger "console;verbosity=normal"
+  rules:
+    - when: always
+  allow_failure: true
+
+###############################################################################
+# COVERAGE
+###############################################################################
+coverage:
+  stage: coverage
+  needs: [unit-tests-net6, unit-tests-net8, unit-tests-net10]
+  script:
+    - dotnet restore dbc_api_net.sln
+    - |
+      dotnet test DeathByCaptcha/DeathByCaptcha.Tests/DeathByCaptcha.Tests.csproj \
+        -c Release -f net10.0 \
+        --filter "Category!=Integration" \
+        --collect "XPlat Code Coverage" \
+        --results-directory ./TestResults/coverage \
+        -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Exclude="[SimpleJson*]*" \
+           DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=cobertura
+    - |
+      report=$(find ./TestResults/coverage -name 'coverage.cobertura.xml' | head -n1)
+      if [ -z "$report" ]; then
+        echo "Coverage report not found." && exit 1
+      fi
+      line_rate=$(grep -oP 'line-rate="\K[0-9.]+' "$report" | head -n1)
+      pct=$(awk "BEGIN { printf \"%.1f\", $line_rate * 100 }")
+      echo "Coverage: ${pct}%"
+  coverage: '/Coverage: (\d+\.\d+)%/'
+  artifacts:
+    name: coverage-report
+    expire_in: 7 days
+    paths:
+      - DeathByCaptcha/DeathByCaptcha.Tests/TestResults/coverage/
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: DeathByCaptcha/DeathByCaptcha.Tests/TestResults/coverage/*.cobertura.xml

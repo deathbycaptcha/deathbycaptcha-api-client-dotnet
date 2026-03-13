@@ -500,6 +500,26 @@ export DBC_INTEGRATION_FULL=true
 dotnet test DeathByCaptcha/DeathByCaptcha.Tests/DeathByCaptcha.Tests.csproj -c Release --filter "Http_FullApiSurface_BasicWorkflow|Socket_FullApiSurface_BasicWorkflow"
 ```
 
+### GitLab CI / gitlab-ci-local
+
+A `.gitlab-ci.yml` is included and mirrors all GitHub Actions jobs.
+To run the full pipeline locally with [gitlab-ci-local](https://github.com/firecow/gitlab-ci-local):
+
+1. Create `.gitlab-ci-local-variables.yml` (auto-detected, never commit it):
+
+```yaml
+DBC_USERNAME: "your_username"
+DBC_PASSWORD: "your_password"
+```
+
+2. Run all tests:
+
+```bash
+gitlab-ci-local --file .gitlab-ci.yml
+```
+
+Integration and Selenium jobs skip gracefully if the variables file is absent.
+
 ### CI (GitHub Actions)
 
 Available workflows:

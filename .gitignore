@@ -29,3 +29,5 @@ Thumbs.db
 
 # Local secrets (never commit)
 .env
+.gitlab-ci-local-variables.yml
+.gitlab-ci-local/
