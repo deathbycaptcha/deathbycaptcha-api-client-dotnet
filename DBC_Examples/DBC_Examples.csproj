@@ -13,7 +13,8 @@
     <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFrameworks>$(DeathByCaptchaLtsTargetFrameworks)</TargetFrameworks>
-    <StartupObject Condition="'$(StartupObject)' == ''">DeathByCaptcha.ExampleSimple</StartupObject>
+    <StartupObject Condition="'$(ExamplesStartupObject)' == ''">DeathByCaptcha.ExampleSimple</StartupObject>
+    <StartupObject Condition="'$(ExamplesStartupObject)' != ''">$(ExamplesStartupObject)</StartupObject>
     <Nullable>enable</Nullable>
     </PropertyGroup>
 

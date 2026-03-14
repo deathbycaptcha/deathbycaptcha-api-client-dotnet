@@ -52,19 +52,19 @@ CLI flags take precedence over the environment variable.
 Default page URL:
 
 ```bash
-dotnet run --project DBC_Examples/DBC_Examples.csproj -c Release -f net10.0 /p:StartupObject=DeathByCaptcha.SeleniumRecaptchaV2Example /t:Rebuild
+dotnet run --project DBC_Examples/DBC_Examples.csproj -c Release -f net10.0 -p:ExamplesStartupObject=DeathByCaptcha.SeleniumRecaptchaV2Example
 ```
 
 Custom page URL:
 
 ```bash
-dotnet run --project DBC_Examples/DBC_Examples.csproj -c Release -f net10.0 /p:StartupObject=DeathByCaptcha.SeleniumRecaptchaV2Example /t:Rebuild -- https://www.google.com/recaptcha/api2/demo
+dotnet run --project DBC_Examples/DBC_Examples.csproj -c Release -f net10.0 -p:ExamplesStartupObject=DeathByCaptcha.SeleniumRecaptchaV2Example -- https://www.google.com/recaptcha/api2/demo
 ```
 
 Headed mode example:
 
 ```bash
-dotnet run --project DBC_Examples/DBC_Examples.csproj -c Release -f net10.0 /p:StartupObject=DeathByCaptcha.SeleniumRecaptchaV2Example /t:Rebuild -- --headed https://www.google.com/recaptcha/api2/demo
+dotnet run --project DBC_Examples/DBC_Examples.csproj -c Release -f net10.0 -p:ExamplesStartupObject=DeathByCaptcha.SeleniumRecaptchaV2Example -- --headed https://www.google.com/recaptcha/api2/demo
 ```
 
 ## CI Integration Test
@@ -80,5 +80,6 @@ It runs the test in headless mode and uses repository secrets `DBC_USERNAME` and
 - This is a functional sample intended for test and integration scenarios.
 - Real target pages may require additional anti-bot handling beyond this minimal flow.
 - If browser startup fails, verify Firefox/geckodriver versions and `PATH`.
-- Use `/p:StartupObject=...` with `dotnet run`. Do not use `-p:...` because `-p` is also used by `--project`.
-- When switching between startup classes, use `/t:Rebuild` (or run `dotnet clean`) to avoid stale outputs.
+- Use `-p:ExamplesStartupObject=...` with `dotnet run` to select a sample entry point.
+- Do not pass `/t:Rebuild` to `dotnet run`; it can be forwarded to the compiler and break the build.
+- If you need a full rebuild, run `dotnet build ... -t:Rebuild` separately, then `dotnet run --no-build ...`.

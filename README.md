@@ -15,6 +15,7 @@
 8. [CI Status Badges](#ci-status-badges)
 9. [Changelog](CHANGELOG.md)
 10. [Selenium Test Sample](SELENIUM_TESTS.md)
+11. [C# and VB Samples Guide](EXAMPLES_CSHARP_VB.md)
 
 ## Introduction
 
@@ -78,6 +79,7 @@ Notes:
 - If your project also uses `System.Net.Http`, use `DeathByCaptcha.HttpClient` (fully qualified) to avoid type ambiguity.
 - Keep credentials in environment variables (`DBC_USERNAME`, `DBC_PASSWORD`) instead of hardcoding.
 - See the full runnable samples in `DBC_Examples/` and `DBC_Examples_VB/`.
+- See `EXAMPLES_CSHARP_VB.md` for a complete startup class map and run commands for non-Selenium C# and VB samples.
 
 ## Modern .NET Workspace
 
@@ -124,15 +126,15 @@ Use `net6.0` only when compatibility with existing consumers is required.
 - Build all: `dotnet build dbc_api_net.sln -c Release`
 - Build library only: `dotnet build DeathByCaptcha/DeathByCaptcha/DeathByCaptcha.csproj -c Release -f net10.0`
 - Run C# examples with explicit startup class:
-    `dotnet run --project DBC_Examples/DBC_Examples.csproj -c Release -f net10.0 /p:StartupObject=DeathByCaptcha.ExampleSimple /t:Rebuild`
+    `dotnet run --project DBC_Examples/DBC_Examples.csproj -c Release -f net10.0 -p:ExamplesStartupObject=DeathByCaptcha.ExampleSimple`
 - Run VB examples with explicit startup class:
-    `dotnet run --project DBC_Examples_VB/DBC_Examples_VB.vbproj -c Release -f net10.0 /p:StartupObject=DBC_Examples_VB.ExampleSimple /t:Rebuild`
+    `dotnet run --project DBC_Examples_VB/DBC_Examples_VB.vbproj -c Release -f net10.0 -p:ExamplesStartupObject=DBC_Examples_VB.ExampleSimple`
 - Run tests: `dotnet test DeathByCaptcha/DeathByCaptcha.Tests/DeathByCaptcha.Tests.csproj -c Release`
 - Run Selenium sample:
-    `dotnet run --project DBC_Examples/DBC_Examples.csproj -c Release -f net10.0 /p:StartupObject=DeathByCaptcha.SeleniumRecaptchaV2Example /t:Rebuild`
+    `dotnet run --project DBC_Examples/DBC_Examples.csproj -c Release -f net10.0 -p:ExamplesStartupObject=DeathByCaptcha.SeleniumRecaptchaV2Example`
 
-Use `/p:StartupObject=...` with `dotnet run` (not `-p:...`) to avoid conflict with `-p/--project`.
-If you are switching between different startup classes, include `/t:Rebuild` (or run `dotnet clean`) to avoid stale up-to-date outputs.
+Use `-p:ExamplesStartupObject=...` with `dotnet run` to select the example entry point.
+Do not pass `/t:Rebuild` to `dotnet run`; if you need a clean rebuild, run `dotnet build ... -t:Rebuild` first and then `dotnet run --no-build ...`.
 
 ### Optional Make wrapper
 
