@@ -9,15 +9,26 @@ For Selenium, use the dedicated document: `SELENIUM_TESTS.md`.
 
 ## Prerequisites
 
-- Set credentials in environment variables:
+- Use a supported framework target (`net6.0`, `net8.0`, `net10.0`).
+- Understand input style differences:
+	- Selenium sample (`SeleniumRecaptchaV2Example`) reads `DBC_USERNAME`/`DBC_PASSWORD` from environment variables.
+	- Most legacy C#/VB samples use positional CLI args (`args` / `argv`) and/or hardcoded placeholders in code.
+- Replace placeholder CAPTCHA params inside each sample as needed.
+
+If you run the default `ExampleSimple` entrypoint, pass args explicitly:
 
 ```bash
 export DBC_USERNAME='your_username'
 export DBC_PASSWORD='your_password'
-```
 
-- Use a supported framework target (`net6.0`, `net8.0`, `net10.0`).
-- Replace placeholder CAPTCHA params inside each sample as needed.
+dotnet run --project DBC_Examples/DBC_Examples.csproj -c Release -f net10.0 \
+	-p:ExamplesStartupObject=DeathByCaptcha.ExampleSimple -- \
+	"$DBC_USERNAME" "$DBC_PASSWORD" DBC_Examples/images/normal.jpg
+
+dotnet run --project DBC_Examples_VB/DBC_Examples_VB.vbproj -c Release -f net10.0 \
+	-p:ExamplesStartupObject=DBC_Examples_VB.ExampleSimple -- \
+	"$DBC_USERNAME" "$DBC_PASSWORD" DBC_Examples_VB/images/normal.jpg
+```
 
 ## Generic Run Command
 
@@ -40,13 +51,21 @@ dotnet build DBC_Examples/DBC_Examples.csproj -c Release -f net10.0 -t:Rebuild -
 dotnet run --project DBC_Examples/DBC_Examples.csproj -c Release -f net10.0 --no-build -p:ExamplesStartupObject=DeathByCaptcha.<StartupClass>
 ```
 
+To pass sample arguments, append `-- <args...>` to `dotnet run`.
+
+## StartupObject and Selenium
+
+- `ExamplesStartupObject` only chooses which `Main` class runs.
+- Selenium does not auto-start unless startup object is `DeathByCaptcha.SeleniumRecaptchaV2Example`.
+- `DBC_Examples` references Selenium packages for that one sample, but non-Selenium startup classes do not launch Firefox.
+
 ## What Is `captcha type`?
 
 `captcha type` is the numeric code sent in the payload (usually `{"type", N}`) that tells DeathByCaptcha which solver flow to use.
 
 - Example: `type = 4` means token-based reCAPTCHA v2.
 - Example: `type = 12` means Cloudflare Turnstile token.
-- Some classic image flows do not require an explicit type (normal image decode).
+- For normal image decode, omitting type is equivalent to `type = 0` (basic image).
 
 If `type` is wrong for the target challenge, solving will fail or return invalid results.
 
@@ -56,12 +75,12 @@ Use startup object prefix `DeathByCaptcha.`
 
 | Sample | File | StartupObject suffix | Captcha type |
 |---|---|---|---|
-| Basic image decode | `DBC_Examples/Examples.cs` | `ExampleSimple` | `none` (normal image) |
+| Basic image decode | `DBC_Examples/Examples.cs` | `ExampleSimple` | `0` (omitted in code) |
 | Balance check only | `DBC_Examples/Examples.cs` | `GetBalance` | `n/a` |
 | Generic token sample | `DBC_Examples/Examples.cs` | `ExampleToken` | `4` |
-| Full upload/poll flow | `DBC_Examples/Examples.cs` | `ExampleFull` | `none` (normal image) |
-| Async decode flow | `DBC_Examples/Examples.cs` | `ExampleAsync` | `none` (normal image) |
-| Normal captcha | `DBC_Examples/NormalCaptchaExample.cs` | `NormalCaptchaExample` | `none` (normal image) |
+| Full upload/poll flow | `DBC_Examples/Examples.cs` | `ExampleFull` | `0` (omitted in code) |
+| Async decode flow | `DBC_Examples/Examples.cs` | `ExampleAsync` | `0` (omitted in code) |
+| Normal captcha | `DBC_Examples/NormalCaptchaExample.cs` | `NormalCaptchaExample` | `0` (omitted in code) |
 | Audio captcha | `DBC_Examples/AudioExample.cs` | `AudioExample` | `13` |
 | reCAPTCHA v2 token | `DBC_Examples/RecaptchaV2Example.cs` | `RecaptchaV2Example` | `4` |
 | reCAPTCHA v3 token | `DBC_Examples/RecaptchaV3Example.cs` | `RecaptchaV3Example` | `5` |
@@ -89,11 +108,11 @@ Use startup object prefix `DBC_Examples_VB.`
 
 | Sample | File | StartupObject suffix | Captcha type |
 |---|---|---|---|
-| Basic image decode | `DBC_Examples_VB/Examples.vb` | `ExampleSimple` | `none` (normal image) |
+| Basic image decode | `DBC_Examples_VB/Examples.vb` | `ExampleSimple` | `0` (omitted in code) |
 | Balance check only | `DBC_Examples_VB/Examples.vb` | `GetBalance` | `n/a` |
 | Generic token sample | `DBC_Examples_VB/Examples.vb` | `ExampleToken` | `4` |
-| Full upload/poll flow | `DBC_Examples_VB/Examples.vb` | `ExampleFull` | `none` (normal image) |
-| Normal captcha | `DBC_Examples_VB/Normal_Captcha.vb` | `NormalCaptcha` | `none` (normal image) |
+| Full upload/poll flow | `DBC_Examples_VB/Examples.vb` | `ExampleFull` | `0` (omitted in code) |
+| Normal captcha | `DBC_Examples_VB/Normal_Captcha.vb` | `NormalCaptcha` | `0` (omitted in code) |
 | Audio captcha | `DBC_Examples_VB/Audio.vb` | `Audio` | `13` |
 | reCAPTCHA v2 token | `DBC_Examples_VB/RecaptchaV2.vb` | `RecaptchaV2` | `4` |
 | reCAPTCHA v3 token | `DBC_Examples_VB/RecaptchaV3.vb` | `RecaptchaV3` | `5` |
@@ -134,5 +153,7 @@ dotnet run --project DBC_Examples_VB/DBC_Examples_VB.vbproj -c Release -f net10.
 - Do not pass `/t:Rebuild` to `dotnet run`.
 - Use `-p:ExamplesStartupObject=...` to select the sample entry point.
 - Many samples in `DBC_Examples/` and `DBC_Examples_VB/` use hardcoded placeholders for credentials and challenge parameters.
-- Most non-test samples do not load `.env` automatically and do not read environment variables by default.
+- `ExampleSimple`, `ExampleToken`, `ExampleFull`, and `ExampleAsync` expect positional arguments.
+- `DBC_Examples_VB.ExampleSimple` validates missing args and prints `Incorrect number of arguments`.
+- Most non-Selenium samples do not load `.env` automatically and do not read environment variables by default.
 - If a sample requires values (username/password, site key, page URL, proxy, etc.), edit placeholders in that sample file or add your own env-loading logic.

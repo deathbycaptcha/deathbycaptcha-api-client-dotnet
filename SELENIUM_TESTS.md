@@ -67,6 +67,13 @@ Headed mode example:
 dotnet run --project DBC_Examples/DBC_Examples.csproj -c Release -f net10.0 -p:ExamplesStartupObject=DeathByCaptcha.SeleniumRecaptchaV2Example -- --headed https://www.google.com/recaptcha/api2/demo
 ```
 
+If you need a clean rebuild first:
+
+```bash
+dotnet build DBC_Examples/DBC_Examples.csproj -c Release -f net10.0 -t:Rebuild -p:ExamplesStartupObject=DeathByCaptcha.SeleniumRecaptchaV2Example
+dotnet run --project DBC_Examples/DBC_Examples.csproj -c Release -f net10.0 --no-build -p:ExamplesStartupObject=DeathByCaptcha.<StartupClass>
+```
+
 ## CI Integration Test
 
 A dedicated GitHub Actions workflow runs Selenium integration tests:

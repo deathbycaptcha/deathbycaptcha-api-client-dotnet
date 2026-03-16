@@ -6,6 +6,11 @@ Imports DeathByCaptcha
 
 Public Class ExampleSimple
 	Public Shared Sub Main(ByVal args As String())
+	    If args.Length < 3 Then
+	        Console.WriteLine("Incorrect number of arguments")
+	        Return
+	    End If
+
 	    ' Put your DBC username & password here:
 	    'Dim clnt As New HttpClient(args(0), args(1))
 	    Dim clnt As New SocketClient(args(0), args(1))

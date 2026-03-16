@@ -304,6 +304,7 @@ namespace DeathByCaptcha
 
         static public void Main(string[] argv)
         {
+            System.Console.WriteLine("ExampleAsync Runing!");
 
             if (argv.Length < 2)
             {

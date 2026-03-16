@@ -125,15 +125,17 @@ Use `net6.0` only when compatibility with existing consumers is required.
 - Restore: `dotnet restore dbc_api_net.sln`
 - Build all: `dotnet build dbc_api_net.sln -c Release`
 - Build library only: `dotnet build DeathByCaptcha/DeathByCaptcha/DeathByCaptcha.csproj -c Release -f net10.0`
-- Run C# examples with explicit startup class:
-    `dotnet run --project DBC_Examples/DBC_Examples.csproj -c Release -f net10.0 -p:ExamplesStartupObject=DeathByCaptcha.ExampleSimple`
-- Run VB examples with explicit startup class:
-    `dotnet run --project DBC_Examples_VB/DBC_Examples_VB.vbproj -c Release -f net10.0 -p:ExamplesStartupObject=DBC_Examples_VB.ExampleSimple`
+- Run C# examples with explicit startup class (legacy examples may require `-- <args...>`):
+    `dotnet run --project DBC_Examples/DBC_Examples.csproj -c Release -f net10.0 -p:ExamplesStartupObject=DeathByCaptcha.ExampleSimple -- "$DBC_USERNAME" "$DBC_PASSWORD" DBC_Examples/images/normal.jpg`
+- Run VB examples with explicit startup class (legacy examples may require `-- <args...>`):
+    `dotnet run --project DBC_Examples_VB/DBC_Examples_VB.vbproj -c Release -f net10.0 -p:ExamplesStartupObject=DBC_Examples_VB.ExampleSimple -- "$DBC_USERNAME" "$DBC_PASSWORD" DBC_Examples_VB/images/normal.jpg`
 - Run tests: `dotnet test DeathByCaptcha/DeathByCaptcha.Tests/DeathByCaptcha.Tests.csproj -c Release`
 - Run Selenium sample:
     `dotnet run --project DBC_Examples/DBC_Examples.csproj -c Release -f net10.0 -p:ExamplesStartupObject=DeathByCaptcha.SeleniumRecaptchaV2Example`
 
 Use `-p:ExamplesStartupObject=...` with `dotnet run` to select the example entry point.
+Selenium only runs when startup object is `DeathByCaptcha.SeleniumRecaptchaV2Example`.
+`DBC_Examples` references Selenium packages, but non-Selenium startup classes do not launch Firefox.
 Do not pass `/t:Rebuild` to `dotnet run`; if you need a clean rebuild, run `dotnet build ... -t:Rebuild` first and then `dotnet run --no-build ...`.
 
 ### Optional Make wrapper
