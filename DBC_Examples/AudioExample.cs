@@ -25,7 +25,7 @@ namespace DeathByCaptcha
             Client client = (Client) new HttpClient("authtoken", token_from_panel); */
 
             // Read the audio file and convert it to base64 string
-            string base64String = null;
+            string? base64String = null;
             try
             {
                 byte[] fileBytes = File.ReadAllBytes("images/audio.mp3");
@@ -34,6 +34,12 @@ namespace DeathByCaptcha
             catch (Exception ex)
             {
                 Console.WriteLine("An error occurred while converting the file to base64: " + ex.Message);
+            }
+
+            if (string.IsNullOrWhiteSpace(base64String))
+            {
+                Console.WriteLine("Audio payload could not be prepared.");
+                return;
             }
 
             try

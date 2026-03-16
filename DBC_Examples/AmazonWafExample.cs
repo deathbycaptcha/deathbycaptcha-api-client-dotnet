@@ -30,8 +30,8 @@ namespace DeathByCaptcha
             string pageurl = "https://efw47fpad9.execute-api.us-east-1.amazonaws.com/latest";
             string iv = "CgAFRjIw2vAAABSM";
             string context = "zPT0jOl1rQlUNaldX6LUpn4D6Tl9bJ8VUQ/NrWFxPiiFujn5bFHzpOlKYQG0Di/UrO/p0xItkf7oGrknHqnj+UjvWv+i0BFbm3vGKceNaGtjrg4wvydL2Li5XjwRUOMW4o+NgO3JPJhkgwRKSyK62cIIzrThlOBD+gmtvKW0JNtH8efKR8Y5mBf0gi8JokjUxq/XbyB6h83tfaiWrp3dkOJsEXHLkT/wwQlFZysA919LCA+XVqgJ9lurUZqHWar+9JHqWnc0ghckKCnUzubvSQzJl+eSIAIoYZrpuZQszOwWzo4=";
-            string challengejs = ""; // optional parameter
-            string captchajs = "";   // optional parameter
+            // Optional parameters can be added to waf_params when required by target site:
+            // "challengejs": "...", "captchajs": "..."
 
             string wafParams = "{\"proxy\": \"" + proxy + "\"," +
                                     "\"proxytype\": \"" + proxyType + "\"," +

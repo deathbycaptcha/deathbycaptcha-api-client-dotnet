@@ -82,7 +82,8 @@ namespace DeathByCaptcha
                     // CAPTCHA was in fact incorrectly solved, do not just
                     // report them all or at random, or you might be banned
                     // as abuser.
-                    if (false /* put your CAPTCHA correctness check here */) {
+                    bool shouldReportIncorrect = false; // Set this after your own correctness validation.
+                    if (shouldReportIncorrect) {
                         if (client.Report(captcha)) {
                             Console.WriteLine("Reported as incorrectly solved");
                         } else {
@@ -169,7 +170,8 @@ namespace DeathByCaptcha
 					// CAPTCHA was in fact incorrectly solved, do not just
 					// report them all or at random, or you might be banned
 					// as abuser.
-					if (false /* put your CAPTCHA correctness check here */) {
+                    bool shouldReportIncorrect = false; // Set this after your own correctness validation.
+                    if (shouldReportIncorrect) {
 						if (client.Report(captcha)) {
 							Console.WriteLine("Reported as incorrectly solved");
 						} else {
@@ -187,12 +189,16 @@ namespace DeathByCaptcha
 
     public class ExampleFull
     {
-        static public Client client = null;
+        static public Client client = null!;
 
 
-        static public void Decode(object o)
+        static public void Decode(object? o)
         {
-            string captchaFileName = (string)o;
+            if (o is not string captchaFileName)
+            {
+                Console.WriteLine("Invalid CAPTCHA payload");
+                return;
+            }
 
             Console.WriteLine("Solving {0}", captchaFileName);
 
@@ -223,7 +229,8 @@ namespace DeathByCaptcha
                     // CAPTCHA was in fact incorrectly solved, do not just
                     // report them all or at random, or you might be banned
                     // as abuser.
-                    if (false /* put your CAPTCHA correctness check here */) {
+                    bool shouldReportIncorrect = false; // Set this after your own correctness validation.
+                    if (shouldReportIncorrect) {
                         if (ExampleFull.client.Report(captcha)) {
                             Console.WriteLine("CAPTCHA {0} reported as incorrectly solved",
                                               captchaFileName);
