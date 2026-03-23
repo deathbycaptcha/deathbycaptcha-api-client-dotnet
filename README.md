@@ -551,3 +551,7 @@ The coverage badge is published from workflow `.github/workflows/coverage.yml` t
 | Integration Tests Selenium | [![Integration Tests Selenium](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/integration-selenium.yml/badge.svg?branch=master)](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/integration-selenium.yml) |
 | Coverage | [![Coverage net10](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/badges/.github/badges/coverage-net10.json)](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/coverage.yml) |
 | NuGet Publish | [![NuGet Publish](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/nuget-publish.yml/badge.svg)](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/actions/workflows/nuget-publish.yml) |
+
+## Responsible Use
+
+See [Responsible Use Agreement](RESPONSIBLE_USE.md).
