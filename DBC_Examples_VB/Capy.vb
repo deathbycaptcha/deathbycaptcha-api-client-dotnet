@@ -22,7 +22,7 @@ Public Class Capy
 
         Dim proxy as String = "http://user:password@127.0.0.1:1234"
         Dim proxyType as String = "HTTP"
-        Dim captchakey as String = "6LdyC2cUAAAAACGuDKpXeDorzUDWXmdqeg-xy696"
+        Dim captchakey as String = "PUZZLE_ADKN2km2MDK2MMDadwd2"
         Dim pageurl as String = "https://www.capy.me/products/puzzle_captcha/"
         Dim api_server as String = "https://www.capy.me/"
 
