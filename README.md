@@ -333,6 +333,8 @@ Full C# sample: [NormalCaptchaExample.cs](https://github.com/deathbycaptcha/deat
 Captcha captcha = client.Decode("images/normal.jpg", 120);
 ```
 
+---
+
 <a id="sample-type-4-recaptcha-v2-token"></a>
 #### 🤖 Sample Type 4: reCAPTCHA v2 Token
 Official description: [reCAPTCHA Token API (v2)](https://deathbycaptcha.com/api/newtokenrecaptcha#token-v2)
@@ -342,6 +344,8 @@ Full C# sample: [RecaptchaV2Example.cs](https://github.com/deathbycaptcha/deathb
 string tokenParams = "{\"proxy\":\"http://user:pass@127.0.0.1:1234\",\"proxytype\":\"HTTP\",\"googlekey\":\"sitekey\",\"pageurl\":\"https://target\"}";
 Captcha captcha = client.Decode(Client.DefaultTimeout, new Hashtable { {"type", 4}, {"token_params", tokenParams} });
 ```
+
+---
 
 <a id="sample-type-5-recaptcha-v3-token"></a>
 #### 🤖 Sample Type 5: reCAPTCHA v3 Token
@@ -353,6 +357,8 @@ string tokenParams = "{\"proxy\":\"http://user:pass@127.0.0.1:1234\",\"proxytype
 Captcha captcha = client.Decode(Client.DefaultTimeout, new Hashtable { {"type", 5}, {"token_params", tokenParams} });
 ```
 
+---
+
 <a id="sample-type-25-recaptcha-v2-enterprise"></a>
 #### 🏢 Sample Type 25: reCAPTCHA v2 Enterprise
 Official description: [reCAPTCHA v2 Enterprise](https://deathbycaptcha.com/api/newtokenrecaptcha#reCAPTCHAv2Enterprise)
@@ -362,6 +368,8 @@ Full C# sample: [RecaptchaV2EnterpriseExample.cs](https://github.com/deathbycapt
 string tokenParams = "{\"proxy\":\"http://user:pass@127.0.0.1:1234\",\"proxytype\":\"HTTP\",\"googlekey\":\"sitekey\",\"pageurl\":\"https://target\"}";
 Captcha captcha = client.Decode(Client.DefaultTimeout, new Hashtable { {"type", 25}, {"token_enterprise_params", tokenParams} });
 ```
+
+---
 
 <a id="sample-type-8-geetest-v3"></a>
 #### 🧩 Sample Type 8: GeeTest v3
@@ -373,6 +381,8 @@ string geetestParams = "{\"proxy\":\"http://user:pass@127.0.0.1:1234\",\"proxyty
 Captcha captcha = client.Decode(Client.DefaultTimeout, new Hashtable { {"type", 8}, {"geetest_params", geetestParams} });
 ```
 
+---
+
 <a id="sample-type-9-geetest-v4"></a>
 #### 🧩 Sample Type 9: GeeTest v4
 Official description: [GeeTest](https://deathbycaptcha.com/api/geetest)
@@ -383,6 +393,8 @@ string geetestParams = "{\"proxy\":\"http://user:pass@127.0.0.1:1234\",\"proxyty
 Captcha captcha = client.Decode(Client.DefaultTimeout, new Hashtable { {"type", 9}, {"geetest_params", geetestParams} });
 ```
 
+---
+
 <a id="sample-type-11-text-captcha"></a>
 #### 💬 Sample Type 11: Text CAPTCHA
 Official description: [Text CAPTCHA](https://deathbycaptcha.com/api/textcaptcha)
@@ -391,6 +403,8 @@ Full C# sample: [TextcaptchaExample.cs](https://github.com/deathbycaptcha/deathb
 ```csharp
 Captcha captcha = client.Decode(Client.DefaultTimeout, new Hashtable { {"type", 11}, {"textcaptcha", "What is two plus two?"} });
 ```
+
+---
 
 <a id="sample-type-12-cloudflare-turnstile"></a>
 #### ☁️ Sample Type 12: Cloudflare Turnstile
@@ -402,6 +416,8 @@ string turnstileParams = "{\"proxy\":\"http://user:pass@127.0.0.1:1234\",\"proxy
 Captcha captcha = client.Decode(Client.DefaultTimeout, new Hashtable { {"type", 12}, {"turnstile_params", turnstileParams} });
 ```
 
+---
+
 <a id="sample-type-13-audio-captcha"></a>
 #### 🔊 Sample Type 13: Audio CAPTCHA
 Official description: [Audio CAPTCHA](https://deathbycaptcha.com/api/audio)
@@ -411,6 +427,8 @@ Full C# sample: [AudioExample.cs](https://github.com/deathbycaptcha/deathbycaptc
 string audioBase64 = Convert.ToBase64String(File.ReadAllBytes("images/audio.mp3"));
 Captcha captcha = client.Decode(Client.DefaultTimeout, new Hashtable { {"type", 13}, {"audio", audioBase64}, {"language", "en"} });
 ```
+
+---
 
 <a id="sample-type-14-lemin"></a>
 #### 🔵 Sample Type 14: Lemin
@@ -422,6 +440,8 @@ string leminParams = "{\"proxy\":\"http://user:pass@127.0.0.1:1234\",\"proxytype
 Captcha captcha = client.Decode(Client.DefaultTimeout, new Hashtable { {"type", 14}, {"lemin_params", leminParams} });
 ```
 
+---
+
 <a id="sample-type-15-capy"></a>
 #### 🏴 Sample Type 15: Capy
 Official description: [Capy](https://deathbycaptcha.com/api/capy)
@@ -431,6 +451,8 @@ Full C# sample: [CapyExample.cs](https://github.com/deathbycaptcha/deathbycaptch
 string capyParams = "{\"proxy\":\"http://user:pass@127.0.0.1:1234\",\"proxytype\":\"HTTP\",\"captchakey\":\"PUZZLE_xxx\",\"api_server\":\"https://www.capy.me/\",\"pageurl\":\"https://target\"}";
 Captcha captcha = client.Decode(Client.DefaultTimeout, new Hashtable { {"type", 15}, {"capy_params", capyParams} });
 ```
+
+---
 
 <a id="sample-type-16-amazon-waf"></a>
 #### 🛡️ Sample Type 16: Amazon WAF
@@ -442,6 +464,8 @@ string wafParams = "{\"proxy\":\"http://user:pass@127.0.0.1:1234\",\"proxytype\"
 Captcha captcha = client.Decode(Client.DefaultTimeout, new Hashtable { {"type", 16}, {"waf_params", wafParams} });
 ```
 
+---
+
 <a id="sample-type-17-siara"></a>
 #### 🔍 Sample Type 17: Siara
 Official description: [Siara](https://deathbycaptcha.com/api/siara)
@@ -451,6 +475,8 @@ Full C# sample: [SiaraExample.cs](https://github.com/deathbycaptcha/deathbycaptc
 string siaraParams = "{\"proxy\":\"http://user:pass@127.0.0.1:1234\",\"proxytype\":\"HTTP\",\"slideurlid\":\"slide_master_url_id\",\"pageurl\":\"https://target\",\"useragent\":\"Mozilla/5.0\"}";
 Captcha captcha = client.Decode(Client.DefaultTimeout, new Hashtable { {"type", 17}, {"siara_params", siaraParams} });
 ```
+
+---
 
 <a id="sample-type-18-mtcaptcha"></a>
 #### 🔒 Sample Type 18: MTCaptcha
@@ -462,6 +488,8 @@ string mtcaptchaParams = "{\"proxy\":\"http://user:pass@127.0.0.1:1234\",\"proxy
 Captcha captcha = client.Decode(Client.DefaultTimeout, new Hashtable { {"type", 18}, {"mtcaptcha_params", mtcaptchaParams} });
 ```
 
+---
+
 <a id="sample-type-19-cutcaptcha"></a>
 #### ✂️ Sample Type 19: Cutcaptcha
 Official description: [Cutcaptcha](https://deathbycaptcha.com/api/cutcaptcha)
@@ -471,6 +499,8 @@ Full C# sample: [CutcaptchaExample.cs](https://github.com/deathbycaptcha/deathby
 string cutcaptchaParams = "{\"proxy\":\"http://user:pass@127.0.0.1:1234\",\"proxytype\":\"HTTP\",\"apikey\":\"api_key\",\"miserykey\":\"misery_key\",\"pageurl\":\"https://target\"}";
 Captcha captcha = client.Decode(Client.DefaultTimeout, new Hashtable { {"type", 19}, {"cutcaptcha_params", cutcaptchaParams} });
 ```
+
+---
 
 <a id="sample-type-20-friendly-captcha"></a>
 #### 💚 Sample Type 20: Friendly Captcha
@@ -482,6 +512,8 @@ string friendlyParams = "{\"proxy\":\"http://user:pass@127.0.0.1:1234\",\"proxyt
 Captcha captcha = client.Decode(Client.DefaultTimeout, new Hashtable { {"type", 20}, {"friendly_params", friendlyParams} });
 ```
 
+---
+
 <a id="sample-type-21-datadome"></a>
 #### 🛡️ Sample Type 21: DataDome
 Official description: [DataDome](https://deathbycaptcha.com/api/datadome)
@@ -491,6 +523,8 @@ Full C# sample: [DatadomeExample.cs](https://github.com/deathbycaptcha/deathbyca
 string datadomeParams = "{\"proxy\":\"http://user:pass@127.0.0.1:1234\",\"proxytype\":\"HTTP\",\"pageurl\":\"https://target\",\"captcha_url\":\"https://target/captcha\"}";
 Captcha captcha = client.Decode(Client.DefaultTimeout, new Hashtable { {"type", 21}, {"datadome_params", datadomeParams} });
 ```
+
+---
 
 <a id="sample-type-23-tencent"></a>
 #### 🧧 Sample Type 23: Tencent
@@ -502,6 +536,8 @@ string tencentParams = "{\"proxy\":\"http://user:pass@127.0.0.1:1234\",\"proxyty
 Captcha captcha = client.Decode(Client.DefaultTimeout, new Hashtable { {"type", 23}, {"tencent_params", tencentParams} });
 ```
 
+---
+
 <a id="sample-type-24-atb"></a>
 #### 🏷️ Sample Type 24: ATB
 Official description: [ATB](https://deathbycaptcha.com/api/atb)
@@ -511,6 +547,8 @@ Full C# sample: [AtbExample.cs](https://github.com/deathbycaptcha/deathbycaptcha
 string atbParams = "{\"proxy\":\"http://user:pass@127.0.0.1:1234\",\"proxytype\":\"HTTP\",\"appid\":\"appid\",\"apiserver\":\"https://cap.aisecurius.com\",\"pageurl\":\"https://target\"}";
 Captcha captcha = client.Decode(Client.DefaultTimeout, new Hashtable { {"type", 24}, {"atb_params", atbParams} });
 ```
+
+---
 
 <a id="captcha-types-extended-reference"></a>
 ## 📚 CAPTCHA Types Extended Reference
@@ -533,10 +571,14 @@ dotnet run --project DBC_Examples/DBC_Examples.csproj -c Release -f net10.0 \
 
 See detailed usage in [SELENIUM_TESTS.md](SELENIUM_TESTS.md).
 
+---
+
 <a id="recaptcha-image-based-api--deprecated-types-2--3"></a>
 ### ⛔ reCAPTCHA Image-Based API — Deprecated (Types 2 & 3)
 
 > ⚠️ **Deprecated.** Types 2 (Coordinates) and 3 (Image Group) are legacy image-based reCAPTCHA challenge methods that are no longer used at captcha solving. Do not use them for new integrations — use the [reCAPTCHA Token API (v2 & v3)](#recaptcha-token-api-v2--v3) instead.
+
+---
 
 <a id="recaptcha-token-api-v2--v3"></a>
 ### 🔐 reCAPTCHA Token API (v2 & v3)
@@ -544,6 +586,8 @@ See detailed usage in [SELENIUM_TESTS.md](SELENIUM_TESTS.md).
 The Token-based API solves reCAPTCHA challenges by returning a token you inject directly into the page form, rather than clicking images. Given a site URL and site key, DBC solves the challenge on its side and returns a token valid for one submission.
 
 - **Token Image API**: Provided a site URL and site key, the API returns a token that you use to submit the form on the page with the reCAPTCHA challenge.
+
+---
 
 <a id="recaptcha-v2-api-faq"></a>
 ### ❓ reCAPTCHA v2 API FAQ
@@ -589,12 +633,16 @@ The token will come in the `Text` property of the `Captcha` object. It's valid f
 "03AOPBWq_RPO2vLzyk0h8gH0cA2X4v3tpYCPZR6Y4yxKy1s3Eo7CHZRQntxrdsaD..."
 ```
 
+---
+
 <a id="what-is-recaptcha-v3"></a>
 ### 🔎 What is reCAPTCHA v3?
 
 This API extends the reCAPTCHA v2 Token API with two additional parameters: `action` and **minimal score (`min_score`)**.
 
 reCAPTCHA v3 returns a score from each user, evaluating if user is a bot or human. The website uses the score value (0 to 1) to decide whether to accept the requests. Lower scores near 0 are identified as bot.
+
+---
 
 <a id="recaptcha-v3-api-faq"></a>
 ### ❓ reCAPTCHA v3 API FAQ
@@ -624,6 +672,8 @@ Full example of **`token_params`**:
 
 **What's the response from reCAPTCHA v3 API?**
 The solution comes in the `Text` property. Refer to [Polling for uploaded CAPTCHA status](https://deathbycaptcha.com/api#polling-captcha) for details. It's valid for one use and has a 1 minute lifespan.
+
+---
 
 <a id="amazon-waf-api-type-16"></a>
 ### 🛡️ Amazon WAF API (Type 16)
@@ -660,6 +710,8 @@ Full example of `waf_params`:
 
 **Response:** The API returns a token valid for one use with a 1-minute lifespan. Set it as the `aws-waf-token` cookie on the target page before submitting the form.
 
+---
+
 <a id="cloudflare-turnstile-api-type-12"></a>
 ### 🌐 Cloudflare Turnstile API (Type 12)
 
@@ -689,6 +741,8 @@ Cloudflare Turnstile is a CAPTCHA alternative that protects pages without requir
 ```
 
 **Response:** The API returns a token valid for one use with a 2-minute lifespan. Submit it via the `input[name="cf-turnstile-response"]` field.
+
+---
 
 <a id="running-tests"></a>
 ## 🧪 Running Tests
