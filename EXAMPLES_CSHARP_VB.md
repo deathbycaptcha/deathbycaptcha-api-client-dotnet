@@ -75,32 +75,32 @@ Use startup object prefix `DeathByCaptcha.`
 
 | Sample | File | StartupObject suffix | Captcha type |
 |---|---|---|---|
-| Basic image decode | `DBC_Examples/Examples.cs` | `ExampleSimple` | `0` (omitted in code) |
-| Balance check only | `DBC_Examples/Examples.cs` | `GetBalance` | `n/a` |
-| Generic token sample | `DBC_Examples/Examples.cs` | `ExampleToken` | `4` |
-| Full upload/poll flow | `DBC_Examples/Examples.cs` | `ExampleFull` | `0` (omitted in code) |
-| Async decode flow | `DBC_Examples/Examples.cs` | `ExampleAsync` | `0` (omitted in code) |
-| Normal captcha | `DBC_Examples/NormalCaptchaExample.cs` | `NormalCaptchaExample` | `0` (omitted in code) |
-| Audio captcha | `DBC_Examples/AudioExample.cs` | `AudioExample` | `13` |
-| reCAPTCHA v2 token | `DBC_Examples/RecaptchaV2Example.cs` | `RecaptchaV2Example` | `4` |
-| reCAPTCHA v3 token | `DBC_Examples/RecaptchaV3Example.cs` | `RecaptchaV3Example` | `5` |
-| reCAPTCHA v2 Enterprise | `DBC_Examples/RecaptchaV2EnterpriseExample.cs` | `RecaptchaV2EnterpriseExample` | `25` |
-| reCAPTCHA coordinates | `DBC_Examples/RecaptchaCoordinatesExample.cs` | `RecaptchaCoordinatesExample` | `2` |
-| reCAPTCHA image group | `DBC_Examples/RecaptchaImageGroupExample.cs` | `RecaptchaImageGroupExample` | `3` |
-| DataDome | `DBC_Examples/DatadomeExample.cs` | `DatadomeExample` | `21` |
-| FriendlyCaptcha | `DBC_Examples/FriendlycaptchaExample.cs` | `FriendlycaptchaExample` | `20` |
-| AtbCaptcha | `DBC_Examples/AtbExample.cs` | `AtbExample` | `24` |
-| Capy puzzle | `DBC_Examples/CapyExample.cs` | `CapyExample` | `15` |
-| Lemin | `DBC_Examples/LeminExample.cs` | `LeminExample` | `14` |
-| MTCaptcha | `DBC_Examples/MtcaptchaExample.cs` | `MtcaptchaExample` | `18` |
-| Tencent | `DBC_Examples/TencentExample.cs` | `TencentExample` | `23` |
-| Cloudflare Turnstile | `DBC_Examples/TurnstileExample.cs` | `TurnstileExample` | `12` |
-| Siara | `DBC_Examples/SiaraExample.cs` | `SiaraExample` | `17` |
-| Amazon WAF | `DBC_Examples/AmazonWafExample.cs` | `AmazonWafExample` | `16` |
-| CutCaptcha | `DBC_Examples/CutcaptchaExample.cs` | `CutcaptchaExample` | `19` |
-| GeeTest v3 | `DBC_Examples/GeetestV3Example.cs` | `GeetestV3Example` | `8` |
-| GeeTest v4 | `DBC_Examples/GeetestV4Example.cs` | `GeetestV4Example` | `9` |
-| Text captcha | `DBC_Examples/TextcaptchaExample.cs` | `TextcaptchaExample` | `11` |
+| Basic image decode | [Examples.cs](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples/Examples.cs) | `ExampleSimple` | `0` (omitted in code) |
+| Balance check only | [Examples.cs](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples/Examples.cs) | `GetBalance` | `n/a` |
+| Generic token sample | [Examples.cs](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples/Examples.cs) | `ExampleToken` | `4` |
+| Full upload/poll flow | [Examples.cs](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples/Examples.cs) | `ExampleFull` | `0` (omitted in code) |
+| Async decode flow | [Examples.cs](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples/Examples.cs) | `ExampleAsync` | `0` (omitted in code) |
+| Normal captcha | [NormalCaptchaExample.cs](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples/NormalCaptchaExample.cs) | `NormalCaptchaExample` | `0` (omitted in code) |
+| Audio captcha | [AudioExample.cs](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples/AudioExample.cs) | `AudioExample` | `13` |
+| reCAPTCHA v2 token | [RecaptchaV2Example.cs](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples/RecaptchaV2Example.cs) | `RecaptchaV2Example` | `4` |
+| reCAPTCHA v3 token | [RecaptchaV3Example.cs](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples/RecaptchaV3Example.cs) | `RecaptchaV3Example` | `5` |
+| reCAPTCHA v2 Enterprise | [RecaptchaV2EnterpriseExample.cs](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples/RecaptchaV2EnterpriseExample.cs) | `RecaptchaV2EnterpriseExample` | `25` |
+| reCAPTCHA coordinates | [RecaptchaCoordinatesExample.cs](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples/RecaptchaCoordinatesExample.cs) | `RecaptchaCoordinatesExample` | `2` |
+| reCAPTCHA image group | [RecaptchaImageGroupExample.cs](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples/RecaptchaImageGroupExample.cs) | `RecaptchaImageGroupExample` | `3` |
+| DataDome | [DatadomeExample.cs](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples/DatadomeExample.cs) | `DatadomeExample` | `21` |
+| FriendlyCaptcha | [FriendlycaptchaExample.cs](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples/FriendlycaptchaExample.cs) | `FriendlycaptchaExample` | `20` |
+| AtbCaptcha | [AtbExample.cs](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples/AtbExample.cs) | `AtbExample` | `24` |
+| Capy puzzle | [CapyExample.cs](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples/CapyExample.cs) | `CapyExample` | `15` |
+| Lemin | [LeminExample.cs](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples/LeminExample.cs) | `LeminExample` | `14` |
+| MTCaptcha | [MtcaptchaExample.cs](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples/MtcaptchaExample.cs) | `MtcaptchaExample` | `18` |
+| Tencent | [TencentExample.cs](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples/TencentExample.cs) | `TencentExample` | `23` |
+| Cloudflare Turnstile | [TurnstileExample.cs](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples/TurnstileExample.cs) | `TurnstileExample` | `12` |
+| Siara | [SiaraExample.cs](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples/SiaraExample.cs) | `SiaraExample` | `17` |
+| Amazon WAF | [AmazonWafExample.cs](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples/AmazonWafExample.cs) | `AmazonWafExample` | `16` |
+| CutCaptcha | [CutcaptchaExample.cs](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples/CutcaptchaExample.cs) | `CutcaptchaExample` | `19` |
+| GeeTest v3 | [GeetestV3Example.cs](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples/GeetestV3Example.cs) | `GeetestV3Example` | `8` |
+| GeeTest v4 | [GeetestV4Example.cs](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples/GeetestV4Example.cs) | `GeetestV4Example` | `9` |
+| Text captcha | [TextcaptchaExample.cs](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples/TextcaptchaExample.cs) | `TextcaptchaExample` | `11` |
 
 ## VB Samples Map
 
@@ -108,31 +108,31 @@ Use startup object prefix `DBC_Examples_VB.`
 
 | Sample | File | StartupObject suffix | Captcha type |
 |---|---|---|---|
-| Basic image decode | `DBC_Examples_VB/Examples.vb` | `ExampleSimple` | `0` (omitted in code) |
-| Balance check only | `DBC_Examples_VB/Examples.vb` | `GetBalance` | `n/a` |
-| Generic token sample | `DBC_Examples_VB/Examples.vb` | `ExampleToken` | `4` |
-| Full upload/poll flow | `DBC_Examples_VB/Examples.vb` | `ExampleFull` | `0` (omitted in code) |
-| Normal captcha | `DBC_Examples_VB/Normal_Captcha.vb` | `NormalCaptcha` | `0` (omitted in code) |
-| Audio captcha | `DBC_Examples_VB/Audio.vb` | `Audio` | `13` |
-| reCAPTCHA v2 token | `DBC_Examples_VB/RecaptchaV2.vb` | `RecaptchaV2` | `4` |
-| reCAPTCHA v3 token | `DBC_Examples_VB/RecaptchaV3.vb` | `RecaptchaV3` | `5` |
-| reCAPTCHA v2 Enterprise | `DBC_Examples_VB/RecaptchaV2Enterprise.vb` | `RecaptchaV2Enterprise` | `25` |
-| reCAPTCHA coordinates | `DBC_Examples_VB/RecaptchaCoordinates.vb` | `RecaptchaCoordinates` | `2` |
-| reCAPTCHA image group | `DBC_Examples_VB/RecaptchaImageGroup.vb` | `RecaptchaImageGroup` | `3` |
-| DataDome | `DBC_Examples_VB/Datadome.vb` | `Datadome` | `21` |
-| FriendlyCaptcha | `DBC_Examples_VB/Friendlycaptcha.vb` | `Friendlycaptcha` | `20` |
-| AtbCaptcha | `DBC_Examples_VB/Atb.vb` | `Atb` | `24` |
-| Capy puzzle | `DBC_Examples_VB/Capy.vb` | `Capy` | `15` |
-| Lemin | `DBC_Examples_VB/Lemin.vb` | `Lemin` | `14` |
-| MTCaptcha | `DBC_Examples_VB/Mtcaptcha.vb` | `Mtcaptcha` | `18` |
-| Tencent | `DBC_Examples_VB/Tencent.vb` | `Tencent` | `23` |
-| Cloudflare Turnstile | `DBC_Examples_VB/Turnstile.vb` | `Turnstile` | `12` |
-| Siara | `DBC_Examples_VB/Siara.vb` | `Siara` | `17` |
-| Amazon WAF | `DBC_Examples_VB/AmazonWaf.vb` | `AmazonWaf` | `16` |
-| CutCaptcha | `DBC_Examples_VB/Cutcaptcha.vb` | `Cutcaptcha` | `19` |
-| GeeTest v3 | `DBC_Examples_VB/GeetestV3.vb` | `GeetestV3` | `8` |
-| GeeTest v4 | `DBC_Examples_VB/GeetestV4.vb` | `GeetestV4` | `9` |
-| Text captcha | `DBC_Examples_VB/Textcaptcha.vb` | `Textcaptcha` | `11` |
+| Basic image decode | [Examples.vb](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples_VB/Examples.vb) | `ExampleSimple` | `0` (omitted in code) |
+| Balance check only | [Examples.vb](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples_VB/Examples.vb) | `GetBalance` | `n/a` |
+| Generic token sample | [Examples.vb](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples_VB/Examples.vb) | `ExampleToken` | `4` |
+| Full upload/poll flow | [Examples.vb](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples_VB/Examples.vb) | `ExampleFull` | `0` (omitted in code) |
+| Normal captcha | [Normal_Captcha.vb](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples_VB/Normal_Captcha.vb) | `NormalCaptcha` | `0` (omitted in code) |
+| Audio captcha | [Audio.vb](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples_VB/Audio.vb) | `Audio` | `13` |
+| reCAPTCHA v2 token | [RecaptchaV2.vb](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples_VB/RecaptchaV2.vb) | `RecaptchaV2` | `4` |
+| reCAPTCHA v3 token | [RecaptchaV3.vb](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples_VB/RecaptchaV3.vb) | `RecaptchaV3` | `5` |
+| reCAPTCHA v2 Enterprise | [RecaptchaV2Enterprise.vb](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples_VB/RecaptchaV2Enterprise.vb) | `RecaptchaV2Enterprise` | `25` |
+| reCAPTCHA coordinates | [RecaptchaCoordinates.vb](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples_VB/RecaptchaCoordinates.vb) | `RecaptchaCoordinates` | `2` |
+| reCAPTCHA image group | [RecaptchaImageGroup.vb](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples_VB/RecaptchaImageGroup.vb) | `RecaptchaImageGroup` | `3` |
+| DataDome | [Datadome.vb](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples_VB/Datadome.vb) | `Datadome` | `21` |
+| FriendlyCaptcha | [Friendlycaptcha.vb](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples_VB/Friendlycaptcha.vb) | `Friendlycaptcha` | `20` |
+| AtbCaptcha | [Atb.vb](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples_VB/Atb.vb) | `Atb` | `24` |
+| Capy puzzle | [Capy.vb](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples_VB/Capy.vb) | `Capy` | `15` |
+| Lemin | [Lemin.vb](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples_VB/Lemin.vb) | `Lemin` | `14` |
+| MTCaptcha | [Mtcaptcha.vb](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples_VB/Mtcaptcha.vb) | `Mtcaptcha` | `18` |
+| Tencent | [Tencent.vb](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples_VB/Tencent.vb) | `Tencent` | `23` |
+| Cloudflare Turnstile | [Turnstile.vb](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples_VB/Turnstile.vb) | `Turnstile` | `12` |
+| Siara | [Siara.vb](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples_VB/Siara.vb) | `Siara` | `17` |
+| Amazon WAF | [AmazonWaf.vb](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples_VB/AmazonWaf.vb) | `AmazonWaf` | `16` |
+| CutCaptcha | [Cutcaptcha.vb](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples_VB/Cutcaptcha.vb) | `Cutcaptcha` | `19` |
+| GeeTest v3 | [GeetestV3.vb](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples_VB/GeetestV3.vb) | `GeetestV3` | `8` |
+| GeeTest v4 | [GeetestV4.vb](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples_VB/GeetestV4.vb) | `GeetestV4` | `9` |
+| Text captcha | [Textcaptcha.vb](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples_VB/Textcaptcha.vb) | `Textcaptcha` | `11` |
 
 ## Quick Examples
 
