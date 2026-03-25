@@ -4,8 +4,8 @@ This document explains how to run the Selenium reCAPTCHA v2 token sample migrate
 
 ## Sample Location
 
-- Code file: `DBC_Examples/SeleniumRecaptchaV2Example.cs`
-- Project: `DBC_Examples/DBC_Examples.csproj`
+- Code file: [DBC_Examples/SeleniumRecaptchaV2Example.cs](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples/SeleniumRecaptchaV2Example.cs)
+- Project: [DBC_Examples/DBC_Examples.csproj](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/DBC_Examples/DBC_Examples.csproj)
 - Startup object: `DeathByCaptcha.SeleniumRecaptchaV2Example`
 
 ## What It Does
@@ -78,7 +78,7 @@ dotnet run --project DBC_Examples/DBC_Examples.csproj -c Release -f net10.0 --no
 
 A dedicated GitHub Actions workflow runs Selenium integration tests:
 
-- `.github/workflows/integration-selenium.yml`
+- [.github/workflows/integration-selenium.yml](https://github.com/deathbycaptcha/deathbycaptcha-api-client-dotnet/blob/master/.github/workflows/integration-selenium.yml)
 
 It runs the test in headless mode and uses repository secrets `DBC_USERNAME` and `DBC_PASSWORD`.
 
