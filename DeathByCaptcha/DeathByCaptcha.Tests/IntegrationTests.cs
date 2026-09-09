@@ -218,7 +218,16 @@ namespace DeathByCaptcha.Tests
             var client = new HttpClient(u, p) { Verbose = false };
             try
             {
-                Captcha captcha = client.Decode(imgPath, DecodeTimeoutSeconds);
+                Captcha captcha;
+                try
+                {
+                    captcha = client.Decode(imgPath, DecodeTimeoutSeconds);
+                }
+                catch (AccessDeniedException)
+                {
+                    Skip.If(true, "DBC API access denied — check credentials and/or balance.");
+                    return;
+                }
 
                 Assert.NotNull(captcha);
                 Assert.True(captcha.Id > 0,
@@ -286,7 +295,16 @@ namespace DeathByCaptcha.Tests
             var client = new SocketClient(u, p) { Verbose = false };
             try
             {
-                Captcha captcha = client.Decode(imgPath, DecodeTimeoutSeconds);
+                Captcha captcha;
+                try
+                {
+                    captcha = client.Decode(imgPath, DecodeTimeoutSeconds);
+                }
+                catch (AccessDeniedException)
+                {
+                    Skip.If(true, "DBC API access denied — check credentials and/or balance.");
+                    return;
+                }
 
                 Assert.NotNull(captcha);
                 Assert.True(captcha.Id > 0,
