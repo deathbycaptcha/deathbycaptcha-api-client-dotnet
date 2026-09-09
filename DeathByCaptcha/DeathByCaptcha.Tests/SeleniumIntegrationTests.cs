@@ -102,7 +102,16 @@ namespace DeathByCaptcha.Tests
             try
             {
                 Console.WriteLine("[SELENIUM-IT] requesting token from DBC");
-                Captcha solution = client.Decode(Client.DefaultTokenTimeout, captchaData);
+                Captcha solution;
+                try
+                {
+                    solution = client.Decode(Client.DefaultTokenTimeout, captchaData);
+                }
+                catch (AccessDeniedException)
+                {
+                    Skip.If(true, "DBC API access denied — check credentials and/or balance.");
+                    return;
+                }
                 Assert.NotNull(solution);
                 Assert.False(string.IsNullOrWhiteSpace(solution.Text));
                 Console.WriteLine($"[SELENIUM-IT] token received captchaId={solution.Id} token-length={solution.Text.Length}");
