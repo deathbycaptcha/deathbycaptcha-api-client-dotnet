@@ -63,6 +63,7 @@ if (captcha != null)
     - [Per-Type Code Snippets](#per-type-code-snippets)
 - [CAPTCHA Types Extended Reference](#captcha-types-extended-reference)
     - [Featured Sample: Selenium reCAPTCHA v2](#-featured-sample-selenium-recaptcha-v2)
+    - [Featured Sample: Playwright reCAPTCHA v2](#-featured-sample-playwright-recaptcha-v2)
     - [reCAPTCHA Image-Based API — Deprecated (Types 2 & 3)](#recaptcha-image-based-api--deprecated-types-2--3)
     - [reCAPTCHA Token API (v2 & v3)](#recaptcha-token-api-v2--v3)
     - [reCAPTCHA v2 API FAQ](#recaptcha-v2-api-faq)
@@ -74,6 +75,7 @@ if (captcha != null)
 - [CI Status Badges](#ci-status-badges)
 - [Changelog](CHANGELOG.md)
 - [Selenium Test Sample](SELENIUM_TESTS.md)
+- [Playwright Test Sample](PLAYWRIGHT_TESTS.md)
 - [C# and VB Samples Guide](EXAMPLES_CSHARP_VB.md)
 
 <a id="installation"></a>
@@ -571,6 +573,25 @@ dotnet run --project DBC_Examples/DBC_Examples.csproj -c Release -f net10.0 \
 ```
 
 See detailed usage in [SELENIUM_TESTS.md](SELENIUM_TESTS.md).
+
+---
+
+<a id="-featured-sample-playwright-recaptcha-v2"></a>
+### ⭐ Featured Sample: Playwright reCAPTCHA v2
+
+This repository includes an integrated Playwright sample in `DBC_Examples/`.
+
+Use this sample when you need a browser-automation flow that extracts `sitekey`, requests a token using DeathByCaptcha (type 4), injects it into the page, and submits the form — using Playwright instead of Selenium.
+
+Quick run:
+
+```bash
+pwsh -Command "& {dotnet tool install --global Microsoft.Playwright.CLI; playwright install}"
+dotnet run --project DBC_Examples/DBC_Examples.csproj -c Release -f net10.0 \
+  -p:ExamplesStartupObject=DeathByCaptcha.PlaywrightRecaptchaV2Example
+```
+
+See detailed usage in [PLAYWRIGHT_TESTS.md](PLAYWRIGHT_TESTS.md).
 
 ---
 
