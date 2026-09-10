@@ -47,5 +47,5 @@ jobs:
         run: |
           dotnet test DeathByCaptcha/DeathByCaptcha.Tests/DeathByCaptcha.Tests.csproj \
             -c Release --no-build -f net10.0 \
-            --filter "Category=Integration&Category!=Selenium&FullyQualifiedName!~FullApiSurface" \
+            --filter "Category=Integration&Category!=Selenium&Category!=Playwright&FullyQualifiedName!~FullApiSurface" \
             --logger "console;verbosity=normal"
