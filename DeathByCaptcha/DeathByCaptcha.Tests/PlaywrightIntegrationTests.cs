@@ -123,7 +123,7 @@ namespace DeathByCaptcha.Tests
                     Console.WriteLine($"[PLAYWRIGHT-IT] token received captchaId={solution.Id} token-length={solution.Text.Length}");
 
                     await page.EvaluateAsync(
-                        "document.getElementById('g-recaptcha-response').value = arguments[0];",
+                        "value => document.getElementById('g-recaptcha-response').value = value;",
                         solution.Text);
                     Console.WriteLine("[PLAYWRIGHT-IT] token injected into g-recaptcha-response");
 

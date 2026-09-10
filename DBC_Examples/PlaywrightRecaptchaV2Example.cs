@@ -122,7 +122,7 @@ namespace DeathByCaptcha
                 Console.WriteLine($"Solution: {solution.Text}");
 
                 await page.EvaluateAsync(
-                    "document.getElementById('g-recaptcha-response').value = arguments[0];",
+                    "value => document.getElementById('g-recaptcha-response').value = value;",
                     solution.Text);
 
                 await page.ClickAsync("#recaptcha-demo-submit");
