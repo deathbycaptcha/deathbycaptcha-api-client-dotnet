@@ -119,7 +119,7 @@ namespace DeathByCaptcha
                     return;
                 }
 
-                Console.WriteLine($"Solution: {solution.Text}");
+                Console.WriteLine($"Token received ({solution.Text.Length} characters)");
 
                 await page.EvaluateAsync(
                     "value => document.getElementById('g-recaptcha-response').value = value;",

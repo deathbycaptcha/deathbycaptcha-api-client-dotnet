@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
+### Fixed
+- The Playwright reCAPTCHA v2 sample no longer prints the solved token.
+- The example project uses Microsoft.Playwright 1.52.0, the same version as
+  the test project.
+
 ## 4.7.1 - 2026-03-12
 
 ### Fixed
