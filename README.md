@@ -64,6 +64,7 @@ if (captcha != null)
 - [CAPTCHA Types Extended Reference](#captcha-types-extended-reference)
     - [Featured Sample: Selenium reCAPTCHA v2](#-featured-sample-selenium-recaptcha-v2)
     - [Featured Sample: Playwright reCAPTCHA v2](#-featured-sample-playwright-recaptcha-v2)
+    - [Featured Sample: Puppeteer reCAPTCHA v2](#-featured-sample-puppeteer-recaptcha-v2)
     - [reCAPTCHA Image-Based API — Deprecated (Types 2 & 3)](#recaptcha-image-based-api--deprecated-types-2--3)
     - [reCAPTCHA Token API (v2 & v3)](#recaptcha-token-api-v2--v3)
     - [reCAPTCHA v2 API FAQ](#recaptcha-v2-api-faq)
@@ -76,6 +77,7 @@ if (captcha != null)
 - [Changelog](CHANGELOG.md)
 - [Selenium Test Sample](SELENIUM_TESTS.md)
 - [Playwright Test Sample](PLAYWRIGHT_TESTS.md)
+- [Puppeteer Test Sample](PUPPETEER_TESTS.md)
 - [C# and VB Samples Guide](EXAMPLES_CSHARP_VB.md)
 
 <a id="installation"></a>
@@ -592,6 +594,24 @@ dotnet run --project DBC_Examples/DBC_Examples.csproj -c Release -f net10.0 \
 ```
 
 See detailed usage in [PLAYWRIGHT_TESTS.md](PLAYWRIGHT_TESTS.md).
+
+---
+
+<a id="-featured-sample-puppeteer-recaptcha-v2"></a>
+### ⭐ Featured Sample: Puppeteer reCAPTCHA v2
+
+This repository includes an integrated PuppeteerSharp sample in `DBC_Examples/`.
+
+Use this sample when you need a browser-automation flow that extracts `sitekey`, requests a token using DeathByCaptcha (type 4), injects it into the page, and submits the form — using PuppeteerSharp.
+
+Quick run:
+
+```bash
+dotnet run --project DBC_Examples/DBC_Examples.csproj -c Release -f net10.0 \
+  -p:ExamplesStartupObject=DeathByCaptcha.PuppeteerRecaptchaV2Example
+```
+
+Chrome is downloaded by PuppeteerSharp on first run; set `CHROME_BIN` to reuse an installed one. See detailed usage in [PUPPETEER_TESTS.md](PUPPETEER_TESTS.md).
 
 ---
 

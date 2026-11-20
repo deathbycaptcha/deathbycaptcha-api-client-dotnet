@@ -62,7 +62,7 @@ namespace DeathByCaptcha
         /**
          * <value>API client verbosity flag; when set to true, the client will dump API requests and responses.</value>
          */
-        public bool Verbose = true;
+        public bool Verbose = false;
 
 
         protected string _username = "";

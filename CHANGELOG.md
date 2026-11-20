@@ -4,7 +4,13 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+### Added
+- PuppeteerSharp reCAPTCHA v2 sample (`DBC_Examples/PuppeteerRecaptchaV2Example.cs`),
+  its integration test, the Puppeteer workflow and `PUPPETEER_TESTS.md`.
+
 ### Fixed
+- Verbose is off by default, so tokens are no longer written to stdout unless
+  the caller enables it.
 - The Playwright reCAPTCHA v2 sample no longer prints the solved token.
 - The example project uses Microsoft.Playwright 1.52.0, the same version as
   the test project.

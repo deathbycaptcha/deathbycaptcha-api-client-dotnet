@@ -7,6 +7,7 @@
     <ItemGroup>
       <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
       <PackageReference Include="Microsoft.Playwright" Version="1.52.0" />
+      <PackageReference Include="PuppeteerSharp" Version="25.17.1" Condition="'$(TargetFramework)' != 'net6.0'" />
       <PackageReference Include="Selenium.Support" Version="4.2.0" />
       <PackageReference Include="SeleniumExtras.WaitHelpers" Version="1.0.2" />
     </ItemGroup>
@@ -18,5 +19,9 @@
     <StartupObject Condition="'$(ExamplesStartupObject)' != ''">$(ExamplesStartupObject)</StartupObject>
     <Nullable>enable</Nullable>
     </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
+    <Compile Remove="PuppeteerRecaptchaV2Example.cs" />
+  </ItemGroup>
 
 </Project>
