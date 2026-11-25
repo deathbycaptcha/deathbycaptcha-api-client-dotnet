@@ -7,6 +7,8 @@ All notable changes to this project will be documented in this file.
 ### Added
 - PuppeteerSharp reCAPTCHA v2 sample (`DBC_Examples/PuppeteerRecaptchaV2Example.cs`),
   its integration test, the Puppeteer workflow and `PUPPETEER_TESTS.md`.
+- ZennoPoster snippets (`DBC_Examples/ZennoPoster/`) with a live test,
+  `ZENNOPOSTER_TESTS.md` and a README.
 
 ### Fixed
 - Verbose is off by default, so tokens are no longer written to stdout unless

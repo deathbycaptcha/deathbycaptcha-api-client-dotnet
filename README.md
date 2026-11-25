@@ -65,6 +65,7 @@ if (captcha != null)
     - [Featured Sample: Selenium reCAPTCHA v2](#-featured-sample-selenium-recaptcha-v2)
     - [Featured Sample: Playwright reCAPTCHA v2](#-featured-sample-playwright-recaptcha-v2)
     - [Featured Sample: Puppeteer reCAPTCHA v2](#-featured-sample-puppeteer-recaptcha-v2)
+    - [Featured Sample: ZennoPoster snippets](#-featured-sample-zenno-poster-snippets)
     - [reCAPTCHA Image-Based API — Deprecated (Types 2 & 3)](#recaptcha-image-based-api--deprecated-types-2--3)
     - [reCAPTCHA Token API (v2 & v3)](#recaptcha-token-api-v2--v3)
     - [reCAPTCHA v2 API FAQ](#recaptcha-v2-api-faq)
@@ -612,6 +613,27 @@ dotnet run --project DBC_Examples/DBC_Examples.csproj -c Release -f net10.0 \
 ```
 
 Chrome is downloaded by PuppeteerSharp on first run; set `CHROME_BIN` to reuse an installed one. See detailed usage in [PUPPETEER_TESTS.md](PUPPETEER_TESTS.md).
+
+---
+
+<a id="-featured-sample-zenno-poster-snippets"></a>
+### ⭐ Featured Sample: ZennoPoster snippets
+
+C# snippets for ZennoPoster "Own code" cubes, in `DBC_Examples/ZennoPoster/`.
+They solve reCAPTCHA v2 and v3, Turnstile, Amazon WAF and image challenges
+through the official client and return the token or the text; the ZennoPoster
+side of the wiring stays in your cube.
+
+Quick check:
+
+```bash
+dotnet test DeathByCaptcha/DeathByCaptcha.Tests/DeathByCaptcha.Tests.csproj \
+  -c Release --filter "Category=ZennoPoster"
+```
+
+See the cube setup, the method table and the IP note in
+[DBC_Examples/ZennoPoster/README.md](DBC_Examples/ZennoPoster/README.md),
+and the test details in [ZENNOPOSTER_TESTS.md](ZENNOPOSTER_TESTS.md).
 
 ---
 

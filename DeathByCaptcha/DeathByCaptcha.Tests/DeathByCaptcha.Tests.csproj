@@ -33,6 +33,9 @@
 
   <ItemGroup>
     <ProjectReference Include="../DeathByCaptcha/DeathByCaptcha.csproj" />
+    <!-- The ZennoPoster snippets live with the examples; reference them so
+         the live test exercises the same code the cubes use. -->
+    <ProjectReference Include="../../DBC_Examples/DBC_Examples.csproj" />
   </ItemGroup>
 
   <!-- Copy normal.jpg test image to output so integration tests can load it by path -->
